@@ -1,0 +1,4 @@
+2024-08-03
+
+- rasch_models_final_items is a list of two rasch models using survey 2a and 2b with the final set of 24 items.
+- rasch_outputs is fit stats for items and people from those two models.

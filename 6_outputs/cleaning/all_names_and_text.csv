@@ -1,0 +1,863 @@
+name,text,survey
+StartDate,Start Date,survey_1
+EndDate,End Date,survey_1
+Status,Response Type,survey_1
+Progress,Progress,survey_1
+duration,Duration (in seconds),survey_1
+Finished,Finished,survey_1
+RecordedDate,Recorded Date,survey_1
+ResponseId,Response ID,survey_1
+ExternalReference,External Data Reference,survey_1
+DistributionChannel,Distribution Channel,survey_1
+UserLanguage,User Language,survey_1
+Q_RecaptchaScore,Q_RecaptchaScore,survey_1
+consent,"Title of Study: A Survey of Recent Consumer Habits and Behavior 
+
+
+
+Principal Investigator (PI): Dr. Trisha R. Shrum
+
+
+
+Funder: USDA Hatch Research Grant
+
+
+
+Introduction
+
+You are being invited to take part in this research study because we want to understand recent daily habits and consumer behavior of adults in the US. This study is being conducted by Dr. Shrum at the University of Vermont.
+
+
+
+Purpose
+
+The purpose of this survey is to help develop a behavioral scale to better understand motivations for consumer behavior.
+
+
+
+Study Procedures
+
+If you take part in the study, you will be asked to take a survey. The survey questions ask whether or not you have done a large number of common consumer behaviors in the past week. We will also collect basic demographic information, attitudes, and general values. You can skip demographic, attitudes, and values questions that you do not feel comfortable answering. The study will take about 10 minutes to complete in a single session.
+
+
+
+Benefits
+
+As a participant in this research study, there may not be direct benefit for you; however, information from this study may benefit other people now or in the future.
+
+
+
+Risks
+
+Your participation in this study involves minimal foreseeable risks. We will not collect any information that will identify you to protect your confidentiality.
+
+
+
+Costs 
+
+There will be no costs to you for participation in this research study.
+
+
+
+Compensation
+
+For taking part in this research study, you will be reimbursed for your time as specified in the Prolific recruitment process.
+
+
+
+Confidentiality
+
+All information collected about you during the course of this study will be stored without any identifiers. No one will be able to match you to your answers.
+
+
+
+Voluntary Participation/Withdrawal
+
+Taking part in this study is voluntary. You are free to not answer any questions or withdraw at any time. You may choose not to take part in this study, or if you decide to take part, you can change your mind later and withdraw from the study.
+
+
+
+Questions If you have any questions about this study now or in the future, you may contact me, Dr. Trisha Shrum at the following phone number: (802) 656-8117. If you have questions or concerns about your rights as a research participant, then you may contact the Director of the Research Protections Office at (802) 656-5040. It is recommended you print or save a pdf of this information sheet for your records before continuing.
+Do you consent to the conditions of this survey?",survey_1
+prolificID,"What is your Prolific ID?
+
+Please note that this response should auto-fill with the correct ID",survey_1
+waterShortShower_,"In the past week, have you ... - taken short showers (less than 10 minutes)?",survey_1
+waterDailyShower_r,"In the past week, have you ... - showered at least once a day?",survey_1
+waterFewerShowers_,"In the past week, have you ... - showered every other day or less?",survey_1
+waterLawn_r,"In the past week, have you ... - watered your lawn?",survey_1
+waterGarden_r,"In the past week, have you ... - watered your garden?",survey_1
+waterDishNotFull_r,"In the past week, have you ... - run the dishwasher without a full load?",survey_1
+waterWashingNotFull_r,"In the past week, have you ... - run the washing machine without a full load?",survey_1
+waterTeethStop_V1_,"In the past week, have you ... - turned off the water when not in use, while brushing teeth, shaving, or washing hands?",survey_1
+waterShowerStop_,"In the past week, have you ... - turned off the water in the middle of a shower (e.g. while soaping up, shaving, etc.)?",survey_1
+season,During which season are you taking this survey?,survey_1
+homeLowAtNight,"In the past week, have you ... - turned down the heat at night?",survey_1
+homeLowAway,"In the past week, have you ... - turned down the heat while away from home?",survey_1
+homeNightLowAC,"In the past week, have you ... - turned down the A/C at night?",survey_1
+homeAwayAC,"In the past week, have you ... - left the A/C on while away from home?",survey_1
+homeFanLeftOn,"In the past week, have you ... - left fans on while away from home?",survey_1
+homeFan,"In the past week, have you ... - used a fan to stay cool?",survey_1
+homeEnergySaverSetting_,"In the past week, have you ... - used an energy-saver setting on a household appliance (e.g. dishwasher or laundry machine)?",survey_1
+waterSaverSetting_,"In the past week, have you ... - used a water-saver setting on a household appliance (e.g. dishwasher or laundry machine)?",survey_1
+homeLightsLeftOn_V1_r,"In the past week, have you ... - left lights on in rooms when not in use?",survey_1
+attentionCheck1,"In the past week, have you ... - leave this response blank",survey_1
+homeElectricOff_,"In the past week, have you ... - turned off electronics or appliances when not in use?",survey_1
+homeUnplug_,"In the past week, have you ... - unplugged electronics or appliances when not in use?",survey_1
+homeTvLeftOn_r,"In the past week, have you ... - left a TV on for more than a few minutes when no one was watching it?",survey_1
+socialReduceImpact_,"In the past week, have you ... - posted ideas or actions to reduce one’s environmental impact on social media?",survey_1
+socialCriticalScience_r,"In the past week, have you ... - posted any information, articles, or content that are critical of mainstream climate change science?",survey_1
+socialSupportive_V1_,"In the past week, have you ... - posted any information, articles, or content that are supportive of mainstream climate change science?",survey_1
+socialCritical_V1_r,"In the past week, have you ... - posted any information, articles, or content that are critical of policies or practices aimed at protecting the environment or promoting sustainability?",survey_1
+socialSupportive_,"In the past week, have you ... - posted any information, articles, or content that are supportive of policies or practices aimed at protecting the environment or promoting sustainability?",survey_1
+foodMeat_r,"In the past week, have you consumed any meat or seafood?",survey_1
+foodMeatlessDinner_,"In the past week, have you ... - eaten at least one dinner without meat?",survey_1
+foodMeatlessLunch_,"In the past week, have you ... - eaten at least one lunch without meat?",survey_1
+foodMeatConventional_r,"In the past week, have you ... - chosen  conventionally raised products over pasture-raised or grass-fed animal products?",survey_1
+foodMeatLocal_,"In the past week, have you ... - bought local meats and animal products?",survey_1
+foodFishConventional_r,"In the past week, have you ... - chosen  conventional fish over sustainably raised fish?",survey_1
+attentionCheck2,"In the past week, have you ... - leave this response blank",survey_1
+foodBeef_r,"In the past week, have you ... - eaten beef?",survey_1
+foodPoultry_r,"In the past week, have you ... - eaten poultry?",survey_1
+foodSeafood_r,"In the past week, have you ... - eaten fish, shrimp, or other seafood?",survey_1
+foodMeatEveryDay_V1_r,"In the past week, have you ... - eaten meat at least once a day?",survey_1
+foodCowMilk_r,"In the past week, have you ... - consumed cow’s milk?",survey_1
+foodNonDairyMilk_,"In the past week, have you ... - consumed a non-dairy milk alternative?",survey_1
+foodAlmondMilk_,"In the past week, have you ... - consumed almond milk?",survey_1
+foodOatMilk_,"In the past week, have you ... - consumed oat milk?",survey_1
+foodEggs_r,"In the past week, have you ... - consumed eggs?",survey_1
+foodSustainableAnimal_,"In the past week, have you ... - purchased or eaten sustainably sourced animal products (dairy, eggs, etc.)?",survey_1
+foodForaged_V1_,"In the past week, have you ... - eaten anything that was foraged (for example eaten edible plants from a forest or yard)?",survey_1
+foodProduceConventional_r,"In the past week, have you ... - purchased non-organic produce?",survey_1
+foodProduceNoPest_,"In the past week, have you ... - purchased produce grown without chemicals and pesticides?",survey_1
+foodLocal_V1_,"In the past week, have you ... - purchased locally grown produce?",survey_1
+foodDistanceRefrain_,"In the past week, have you ... - refrained from making a food purchase because it was produced too far away?",survey_1
+foodGarden_,"In the past week, have you ... - consumed food from a personal or household garden?",survey_1
+foodRestaurant_r,"In the past week, have you ... - eaten out at a restaurant?",survey_1
+foodTakeOut_r,"In the past week, have you ... - gotten take-out from a restaurant?",survey_1
+foodOwnLunch_,"In the past week, have you ... - brought your own lunch to work or school?",survey_1
+foodTofu_V1_,"In the past week, have you ... - consumed climate-friendly protein (e.g., tofu or beyond burgers)?",survey_1
+packDisposableWaterDrink_r,"In the past week, have you ... - consumed water from a disposable water bottle?",survey_1
+packDisposableWaterBuy_r,"In the past week, have you ... - purchased disposable water bottles to have on hand?",survey_1
+packDisposableNonWater_r,"In the past week, have you ... - consumed a non-water beverage from a disposable bottle?",survey_1
+packDeclineBag_V1_,"In the past week, have you ... - declined a paper or plastic bag at the register?",survey_1
+packReducedPlastic_V1_,"In the past week, have you ... - purchased a product with reduced plastic packaging?",survey_1
+packGlassAlumOverPlastic_,"In the past week, have you ... - chosen glass or aluminum packaged products over plastic packaged products?",survey_1
+packAlumOverGlass_,"In the past week, have you ... - chosen aluminum packaged products over glass packaged products (e.g., aluminium cans vs. glass bottles)?",survey_1
+packPlasticStraw_r,"In the past week, have you ... - used a disposable plastic straw?",survey_1
+purchReceipt_r,"In the past week, have you ... - asked for a paper receipt?",survey_1
+packReusedSingleUse_,"In the past week, have you ... - reused glass or plastic containers that were intended to be single-use (such as a glass beverage bottle or take-out container)?",survey_1
+packReusedPaperPlasticBags_,"In the past week, have you ... - reused plastic or paper bags?",survey_1
+packReusedZiploc_,"In the past week, have you ... - washed and/or reused a Ziploc bag?",survey_1
+packReusableBags_V1_,"In the past week, have you ... - brought your own bags or cardboard boxes to the store instead of using new paper or plastic bags?",survey_1
+packReusableBottle_V1_,"In the past week, have you ... - used a refillable water bottle?",survey_1
+packReusableBottleNonWater_,"In the past week, have you ... - used a refillable container for a beverage other than water?",survey_1
+packContainerToRestaurant_V1_,"In the past week, have you ... - brought your own container for left overs?",survey_1
+packCarriedUtensils_V1_,"In the past week, have you ... - Used your own utensils to avoid using disposable utensils?",survey_1
+packReusableNapkin_,"In the past week, have you ... - used reusable cloth napkins?",survey_1
+packClothNapkin_r,"In the past week, have you ... - used paper napkins?",survey_1
+packPaperTowel_r,"In the past week, have you ... - used paper towels?",survey_1
+packRecycledContainer_V1_,"In the past week, have you ... - recycled glass or plastic containers?",survey_1
+packThrownAwayRecycling_r,"In the past week, have you ... - thrown away a piece of trash that could have been recycled?",survey_1
+packPullRecycleFromTrash_,"In the past week, have you ... - pulled something recyclable out of a trash can even though it was not yours?",survey_1
+packCompost_V1_,"In the past week, have you ... - put compostable waste into a compost receptacle?",survey_1
+packCarriedTrash_V1_,"In the past week, have you ... - held on to something recyclable or compostable until finding the appropriate receptacle?",survey_1
+foodThrownBadFood_r,"In the past week, have you ... - thrown out food that had gone bad?",survey_1
+foodThrownGoodFood_r,"In the past week, have you ... - thrown out food that had not yet gone bad?",survey_1
+brokenQuestion,"In the past week, have you ... - 6",survey_1
+packCutOpen_,"In the past week, have you ... - cut open packaging to use up the last of a product?",survey_1
+packDilutedSoap_,"In the past week, have you ... - diluted soap or liquid products to expand their lifespan?",survey_1
+purchThrownAwayEarly_r,"In the past week, have you ... - thrown away products before using them up?",survey_1
+purchGaveToFriend_,"In the past week, have you ... - passed on a product to a friend or family member after deciding it wasn’t working for you?",survey_1
+purchRepurposedNotThrown_,"In the past week, have you ... - repurposed an item instead of throwing it away?",survey_1
+purchGaveNotThrown_,"In the past week, have you ... - given away an item instead of throwing it away?",survey_1
+purchSoldNotThrown_,"In the past week, have you ... - sold an item instead of throwing it away?",survey_1
+purchTriedSecondHand_,"In the past week, have you ... - tried to buy an item second-hand instead of something new?",survey_1
+purchBoughtSecondHand_,"In the past week, have you ... - bought a second-hand item?",survey_1
+purchReplaceNotRepair_r,"In the past week, have you ... - replaced something instead of repairing it?",survey_1
+purchBuyNothing_,"In the past week, have you ... - browsed or participated in a buy-nothing group?",survey_1
+purchPrintedPaper_r,"In the past week, have you ... - printed something when using paper could have been avoided?",survey_1
+purchLibrary_,"In the past week, have you ... - used the library or read an online copy of a book or publication?",survey_1
+purchEnviroCleaning_,"In the past week, have you ... - used environmentally friendly cleaning products?",survey_1
+transDriveLess_,"In the past week, have you ... - have you attempted to drive less?",survey_1
+transCarpool_,"In the past week, have you ... - carpooled?",survey_1
+transPublic_,"In the past week, have you ... - used public transportation?",survey_1
+transWalk_,"In the past week, have you ... - walked as a form of transportation?",survey_1
+transBike_V1_,"In the past week, have you ... - biked/skateboarded/rollerbladed as a form of transportation?",survey_1
+transDriveDaily_r,"In the past week, have you ... - driven once a day?",survey_1
+purchSlowShipping_,"In the past week, have you ... - chosen a slower shipping speed for package deliveries?",survey_1
+transLimitFuel_,"In the past week, have you ... - driven in a way that limits fuel consumption (e.g. avoided excessive acceleration/braking)?",survey_1
+transTirePressure_,"In the past week, have you ... - checked your tire pressure?",survey_1
+fashMend_,"In the past week, have you ... - mended clothing?",survey_1
+purchOnlyNecessities_V1_,"In the past week, have you ... - avoided buying anything except necessities (ie. food)?",survey_1
+fashReturn_r,"In the past week, have you ... - returned a piece of clothing that you had purchased?",survey_1
+fashPutAside_,"In the past week, have you ... - put aside old clothing or belongings to donate or sell?",survey_1
+fashShoppedSecondHand_,"In the past week, have you ... - shopped for second hand clothing?",survey_1
+fashBoughtNew_r,"In the past week, have you ... - purchased new clothing?",survey_1
+fashFast_r,"In the past week, have you ... - purchased clothing from an inexpensive fast fashion brand (such as H&M, Walmart, Target, Shein, Amazon, or otherwise)?",survey_1
+fashOnlineReturn_r,"In the past week, have you ... - returned an online clothing purchase?",survey_1
+fashClothingSwap_,"In the past week, have you ... - hosted or attended a clothing swap?",survey_1
+fashSustainable_,"In the past week, have you ... - chosen sustainably produced clothing over conventionally produced clothing?",survey_1
+fashRepairable_,"In the past week, have you ... - make an effort to buy repairable clothing?",survey_1
+fashNatural,"The last time you bought clothing, was the clothing made of natural fibers (such as hemp, wool, cotton, linen)?",survey_1
+fashSynthetic,"The last time you bought clothing, was the clothing made of synthetic fibers (such as polyester, acrylic, rayon,  nylon)?",survey_1
+fashRecyclable,"The last time you bought clothing, was the clothing made of recyclable fibers?",survey_1
+fashShoesResolable,"The last time you bought a pair of shoes, did you think about whether they could be repaired or re-soled?",survey_1
+enviroID1,Acting environmentally friendly is an important part of who I am.,survey_1
+enviroID2,I am the type of person who acts environmentally friendly.,survey_1
+enviroID3,I see myself as an environmentally friendly person.,survey_1
+greenGlow1,Doing something good for the environment would make me feel positive about myself.,survey_1
+greenGlow2,I expect to feel good when I behave environmentally friendly.,survey_1
+greenGlow3,I anticipate that I would feel good when I do something to help the environment.,survey_1
+greenGlow4personalNorm1,I'd feel guilty if I did NOT behave environmentally friendly.,survey_1
+personalNorm2,I feel morally obligated to act in an environmentally-friendly manner.,survey_1
+personalNorm3,I would be a better person if I would act in an environmentally-friendly manner.,survey_1
+valuesPreventingPollution,Please rank the following values based on their importance in your life - PREVENTING POLLUTION (protecting natural resources),survey_1
+valuesProtectingEnvironment,Please rank the following values based on their importance in your life - PROTECTING THE ENVIRONMENT (preserving nature),survey_1
+valuesRespectingEarth,Please rank the following values based on their importance in your life - RESPECTING THE EARTH (harmony with other species),survey_1
+valuesUnifyWithNature,Please rank the following values based on their importance in your life - UNITY WITH NATURE (ﬁtting into nature),survey_1
+valuesEquality,Please rank the following values based on their importance in your life - EQUALITY (equal opportunity for all),survey_1
+valuesSocialJustice,"Please rank the following values based on their importance in your life - SOCIAL JUSTICE (correcting injustice, care for the weak)",survey_1
+valuesWorldPeace,Please rank the following values based on their importance in your life - A WORLD AT PEACE (free of war and conﬂict),survey_1
+valuesHelpful,Please rank the following values based on their importance in your life - HELPFUL (working for the welfare of others),survey_1
+valuesPleasure,Please rank the following values based on their importance in your life - PLEASURE (gratiﬁcation of desires),survey_1
+valuesEnjoyingLife,"Please rank the following values based on their importance in your life - ENJOYING LIFE (enjoying food, sex, leisure, etc.)",survey_1
+valuesSelfIndulgent,Please rank the following values based on their importance in your life - SELF-INDULGENT (doing pleasant things),survey_1
+valuesSocialPower,"Please rank the following values based on their importance in your life - SOCIAL POWER (control over others, dominance)",survey_1
+valuesAuthority,Please rank the following values based on their importance in your life - AUTHORITY (the right to lead or command),survey_1
+valuesInfluential,Please rank the following values based on their importance in your life - INFLUENTIAL (having an impact on people and events),survey_1
+valuesWealth,"Please rank the following values based on their importance in your life - WEALTH (material possessions, money)",survey_1
+valuesAmbitious,"Please rank the following values based on their importance in your life - AMBITIOUS (hardworking, aspiring)",survey_1
+personalResponsibility,To what extent do you feel a personal responsibility to try to reduce climate change?,survey_1
+ccStatements,Which of these three statements about the Earth’s temperature comes closest to your view?,survey_1
+ccWorry,How worried are you about climate change?”,survey_1
+extremeWeatherFiveYears,"In the past five years, have you been personally affected by wildfires, hurricanes, tropical storms, floods, heat waves, drought, or other extreme weather-related events?",survey_1
+age,What is your age?,survey_1
+gender,What is your gender? - Selected Choice,survey_1
+genderOther,What is your gender? - Other - Text,survey_1
+raceWhite,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - White or Caucasian,survey_1
+raceBlack,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - Black or African American,survey_1
+raceHispanicLatino,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - Hispanic or Latino,survey_1
+raceAsian,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - Asian or Asian American,survey_1
+raceNative,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - American Indian or Alaska Native,survey_1
+raceIslander,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - Native Hawaiian or Pacific Islander,survey_1
+raceOther,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice - Other,survey_1
+raceOtherText,What is your racial or ethnicity identification? (Mark all that apply) - Other - Text,survey_1
+education,What is your highest degree or level of education?,survey_1
+zip,What is your five digit postal code? (Note: This information will not be used to identify or contact you.),survey_1
+rurality,How would you describe the city that you live in?,survey_1
+income,What is your annual household income?,survey_1
+children,Do you have children?,survey_1
+election,"In the 2020 election, which presidential candidate did you vote for?",survey_1
+politics,How would you describe your political views?,survey_1
+PROLIFIC_PID,PROLIFIC_PID,survey_1
+StartDate,Start Date,survey_2a
+EndDate,End Date,survey_2a
+Status,Response Type,survey_2a
+Progress,Progress,survey_2a
+duration,Duration (in seconds),survey_2a
+Finished,Finished,survey_2a
+RecordedDate,Recorded Date,survey_2a
+ResponseId,Response ID,survey_2a
+RecipientLastName,Recipient Last Name,survey_2a
+RecipientFirstName,Recipient First Name,survey_2a
+RecipientEmail,Recipient Email,survey_2a
+ExternalReference,External Data Reference,survey_2a
+DistributionChannel,Distribution Channel,survey_2a
+UserLanguage,User Language,survey_2a
+Q_RecaptchaScore,Q_RecaptchaScore,survey_2a
+consent,"Title of Study: A Survey of Recent Consumer Habits and Behavior
+
+
+Principal Investigator (PI): Dr. Trisha R. Shrum	
+
+Funder: USDA Hatch Research Grant
+
+
+Introduction
+You are being invited to take part in this research study because we want to understand recent daily habits and consumer behavior of adults in the US. This study is being conducted by Dr. Shrum at the University of Vermont. 
+
+Purpose 
+The purpose of this survey is to help develop a behavioral scale to better understand motivations for consumer behavior.
+
+
+Study Procedures
+
+If you take part in the study, you will be asked to take a survey.
+
+
+The survey questions ask whether or not you have done a large number of common consumer behaviors in the past week. We will also collect information about attitudes, values, and demographics. 
+
+You can skip demographic, attitudes, and values questions that you do not feel comfortable answering, but we ask that you be as thorough as possible. The study will take about 12 minutes to complete in a single session. 
+
+Benefits 
+As a participant in this research study, there may not be direct benefit for you; however, information from this study may benefit other people now or in the future.
+
+
+Risks 
+Your participation in this study involves minimal foreseeable risks. 
+
+We will not collect any information that will identify you to protect your confidentiality.
+
+
+Costs 
+There will be no costs to you for participation in this research study.
+
+
+Compensation
+For taking part in this research study, you will be reimbursed for your time as specified in the Prolific recruitment process.
+
+
+Confidentiality
+
+All information collected about you during the course of this study will be stored without any identifiers. No one will be able to match you to your answers. 
+
+Voluntary Participation/Withdrawal
+Taking part in this study is voluntary. You are free to not answer any questions or withdraw at any time. You may choose not to take part in this study, or if you decide to take part, you can change your mind later and withdraw from the study. 
+
+
+
+Questions
+
+If you have any questions about this study now or in the future, you may contact me, Dr. Trisha Shrum at the following phone number: (802) 656-8117. If you have questions or concerns about your rights as a research participant, then you may contact the Director of the Research Protections Office at (802) 656-5040. 
+
+It is recommended you print or save a pdf of this information sheet for your records before continuing.
+
+Do you consent to the conditions of this survey?",survey_2a
+prolificID,"What is your Prolific ID?
+
+Please note that this response should auto-fill with the correct ID",survey_2a
+dictatorGame,"We will be randomly selecting 1 out of every 50 participants to receive a
+bonus of $10.
+You have the option to donate part or all of your bonus to Trees for the Future,
+a non-profit that plants trees that remove carbon dioxide from the atmosphere
+which helps reduce climate change. You can check out the organization at their
+website: https://trees.org/.
+
+
+Below, choose how much of the $10 bonus you would like to donate to Trees
+for the Future and how much you would like to keep for yourself if you win
+the bonus.",survey_2a
+waterWashingNotFull_r,"In the past week, have you ... - run the washing machine without a full load?",survey_2a
+waterDishNotFull_r,"In the past week, have you ... - run the dishwasher without a full load?",survey_2a
+waterShowerStop_,"In the past week, have you ... - turned off the water in the middle of a shower (e.g. while soaping up, shaving, etc.)?",survey_2a
+waterTeethStop_,"In the past week, have you ... - turned off the water while brushing your teeth?",survey_2a
+waterLawn_r,"In the past week, have you ... - watered your lawn?",survey_2a
+homeHeatOrCool,"In the past week, have heated or cooled your home?",survey_2a
+homeBelow68,"In the past week, have you... - set your thermostat at or below 68 degrees?",survey_2a
+homeLowAtNight,"In the past week, have you... - lowered your thermostat at night? (either manually or pre-programmed)",survey_2a
+homeLowAway,"In the past week, have you... - lowered your thermostat when you were away from home?",survey_2a
+homeSpaceHeater,"In the past week, have you... - used a space heater?",survey_2a
+homeAbove72,"In the past week, have you... - set your thermostat at or above 72 degrees?",survey_2a
+homeIncreaseNight,"In the past week, have you... - increased your thermostat at night?",survey_2a
+homeIncreaseAway,"In the past week, have you... - increased your thermostat when you were away from home?",survey_2a
+homeFan,"In the past week, have you... - used a fan to stay cool?",survey_2a
+homeClothesCold_,"In the past week, have you... - used the cold water setting to wash your clothes?",survey_2a
+homeClothesHang_,"In the past week, have you... - hung clean clothes to dry?",survey_2a
+homeClothesDryer_r,"In the past week, have you... - used a clothes dryer?",survey_2a
+homeLightsOff_,"In the past week, have you... - went around your house and turned off lights not in use?",survey_2a
+socialCritical_r,"In the past week, have you ... - posted or shared content on social media that is critical of environmental policies or initiatives?",survey_2a
+socialSupportive_,"In the past week, have you ... - posted any information, articles, or content that are supportive of policies or practices aimed at protecting the environment or promoting sustainability?",survey_2a
+socialReduceImpact_,"In the past week, have you ... - posted ideas or actions to reduce one’s environmental impact on social media?",survey_2a
+socialOutside_,"In the past week, have you ... - spent time outside in nature (e.g., a forest, lake, ocean)?",survey_2a
+socialDocumentary_,"In the past week, have you ... - watched a nature documentary?",survey_2a
+socialRead_,"In the past week, have you ... - read about wildlife, nature, or environmental issues?",survey_2a
+socialGroup_,"In the past week, have you ... - participated in a community group focused on environmental issues facing your community?",survey_2a
+socialConversation_,"In the past week, have you ... - had a conversation about environmental issues?",survey_2a
+foodOrganicVeg_,"In the past week, have you ... - purchased organic fruits or vegetables?",survey_2a
+foodLocal_,"In the past week, have you ... - purchased locally produced food?",survey_2a
+foodGarden_,"In the past week, have you ... - consumed food from your household's garden?",survey_2a
+foodOwnLunch_,"In the past week, have you ... - brought your own lunch to work or school?",survey_2a
+foodForage_,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_2a
+foodRefrainedDistance_,"In the past week, have you ... - refrained from making a food purchase because it was produced too far away?",survey_2a
+foodMeat_r,"In the past week, have you ... - eaten any meat or seafood?",survey_2a
+foodBeef_r,"In the past week, have you ... - eaten beef?",survey_2a
+foodLunchNoMeat_,"In the past week, have you ... - eaten at least one lunch without meat?",survey_2a
+foodDinnerNoMeat_,"In the past week, have you ... - eaten at least one dinner without meat?",survey_2a
+foodMeatEveryDay_r,"In the past week, have you ... - eaten meat or seafood every day?",survey_2a
+foodCowMilk_r,"In the past week, have you ... - consumed cow's milk?",survey_2a
+foodTofu_,"In the past week, have you ... - consumed tofu or meat-substitutes?",survey_2a
+foodNonDairyMilk_,"In the past week, have you ... - consumed a non-dairy milk alternative?",survey_2a
+foodOatMilk_,"In the past week, have you ... - consumed oat milk?",survey_2a
+foodVegan_,"In the past week, have you ... - eaten a fully vegan diet?",survey_2a
+packDisposableWaterAway_r,"In the past week, have you ... - drank water from a disposable water bottle while away from your home?",survey_2a
+packDisposableWaterHome_r,"In the past week, have you ... - drank water from disposable water bottles while at home?",survey_2a
+packTapWaterHome_,"In the past week, have you ... - drank filtered or unfiltered tap water at home?",survey_2a
+packNonWaterDisposable_r,"In the past week, have you ... - drank a non-water beverage from a disposable plastic bottle?",survey_2a
+packReusableBottle_,"In the past week, have you ... - carried a reusable water bottle with you?",survey_2a
+packReusableMug_,"In the past week, have you ... - used a reusable coffee/tea travel thermos?",survey_2a
+packDisposableCoffee_r,"In the past week, have you ... - used a disposable coffee/tea cup?",survey_2a
+packDeclineBag_,"In the past week, have you ... - declined a bag at the register?",survey_2a
+packReusableBag_,"In the past week, have you ... - brought reusable bags to a store?",survey_2a
+packDisposableBag_r,"In the past week, have you ... - used a disposable bag at a store?",survey_2a
+packContainerToRestaurant_,"In the past week, have you ... - brought your own containers for leftovers or takeout to a restaurant?",survey_2a
+packCarriedUtensils_,"In the past week, have you ... - carried reusable utensils or straws while you were away from home?",survey_2a
+packDisposablePlate_r,"In the past week, have you ... - used a disposable plate?",survey_2a
+packRags_,"In the past week, have you ... - used reusable washcloths or rags for household cleaning?",survey_2a
+packReusableNapkin_,"In the past week, have you ... - used reusable cloth napkins?",survey_2a
+packZiploc_r,"In the past week, have you ... - used plastic wrap or new ziploc bags?",survey_2a
+attentionCheck1,"In the past week, have you ... - Please leave this question blank.",survey_2a
+packPaperTowel_r,"In the past week, have you ... - used paper towels?",survey_2a
+packReducedPlastic_,"In the past week, have you ... - purchased a product with reduced plastic packaging instead of an option with more plastic packaging?",survey_2a
+packGlassAlumOverPlastic_,"In the past week, have you ... - chosen glass or aluminum packaged products over plastic packaged products?",survey_2a
+packAlumOverGlass_,"In the past week, have you ... - chosen aluminum packaged products over glass packaged products (e.g., aluminum cans vs. glass bottles)?",survey_2a
+packRecycledContainer_,"In the past week, have you ... - recycled glass, plastic, or metal containers?",survey_2a
+packRecycledPaper_,"In the past week, have you ... - recycled paper, cardboard, or cardstock?",survey_2a
+packPickUpRecycle_,"In the past week, have you ... - picked up something off of a curb or dumpster to use or recycle?",survey_2a
+packCompost_,"In the past week, have you ... - composted yard or food waste?",survey_2a
+packCarriedTrash_,"In the past week, have you ... - carried waste with you until you could find a recycling or compost bin instead of throwing it in the trash?",survey_2a
+packPickedUpLitter_,"In the past week, have you ... - picked up litter?",survey_2a
+foodForageBSCheck,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_2a
+packThrownAwayRecycling_r,"In the past week, have you ... - thrown away a piece of trash that could have been recycled?",survey_2a
+packPullRecycleFromTrash_,"In the past week, have you ... - pulled something recyclable out of a trash can even though it was not yours?",survey_2a
+packDilutedSoap_,"In the past week, have you ... - diluted soap or liquid products to expand their lifespan?",survey_2a
+packGaveNotThrown_,"In the past week, have you ... - given away or sold an item instead of throwing it away?",survey_2a
+packRepaired_,"In the past week, have you ... - repaired something instead of replacing it?",survey_2a
+packReusedPaperPlasticBags_,"In the past week, have you ... - reused plastic or paper bags?",survey_2a
+purchThrownAwayEarly_r,"In the past week, have you ... - thrown away products before using them up?",survey_2a
+foodThrownBadFood_r,"In the past week, have you ... - thrown out food that had gone bad?",survey_2a
+foodThrownGoodFood_r,"In the past week, have you ... - thrown out food that had not yet gone bad?",survey_2a
+packReusedSingleUse_,"In the past week, have you ... - reused glass or plastic containers that were intended to be single-use (such as a glass beverage bottle or take-out container)?",survey_2a
+purchBoughtSecondHand_,"In the past week, have you ... - bought a second-hand item?",survey_2a
+packGaveToFriend_,"In the past week, have you ... - passed on a product to a friend or family member after deciding it wasn’t working for you?",survey_2a
+purchBuyNothing_,"In the past week, have you ... - browsed or participated in a buy-nothing group?",survey_2a
+purchSlowShipping_,"In the past week, have you ... - chosen a slower shipping speed for package deliveries?",survey_2a
+transWalk_,"In the past week, have you ... - walked as a form of transportation?",survey_2a
+transBike_,"In the past week, have you ... - biked as a form of transportation?",survey_2a
+transPublic_,"In the past week, have you ... - used public transportation?",survey_2a
+transCarpool_,"In the past week, have you ... - carpooled?",survey_2a
+attentionCheck2,"In the past week, have you ... - Please leave this question blank.",survey_2a
+transDrivenAlone_r,"In the past week, have you ... - driven alone?",survey_2a
+transTaxiAlone_r,"In the past week, have you ... - ridden in a taxi/uber alone?",survey_2a
+transTirePressure_,"In the past week, have you ... - checked your tire pressure?",survey_2a
+fashFast_r,"In the past week, have you ... - purchased clothing from an inexpensive fast fashion brand (such as H&M, Walmart, Target, Shein, Amazon, or otherwise)?",survey_2a
+purchOnlyNecessities_,"In the past week, have you ... - avoided buying anything except necessities (ie. food and essentials)?",survey_2a
+fashPutAside_,"In the past week, have you ... - put aside old clothing or belongings to donate or sell?",survey_2a
+fashShoppedSecondHand_,"In the past week, have you ... - shopped for second hand clothing?",survey_2a
+purchTriedSecondHand_,"In the past week, have you ... - tried to buy an item second-hand instead of something new?",survey_2a
+enviroID1,Acting environmentally friendly is an important part of who I am.,survey_2a
+enviroID2,I am the type of person who acts environmentally friendly.,survey_2a
+enviroID3,I see myself as an environmentally friendly person.,survey_2a
+enviroID4,I feel morally obligated to act in an environmentally-friendly manner.,survey_2a
+greenGlow1,Doing something good for the environment would make me feel positive about myself.,survey_2a
+greenGlow2,I expect to feel good when I behave environmentally friendly.,survey_2a
+greenGlow3,I anticipate that I would feel good when I do something to help the environment.,survey_2a
+greenGlow4,I'd feel guilty if I did NOT behave environmentally friendly.,survey_2a
+efficacy1,"By purchasing products made in an environmentally friendly way, each consumer's behavior can have a positive effect on the environment and society.",survey_2a
+efficacy2,"Since each individual can have any effect upon environmental problems, what I do can make meaningful difference.",survey_2a
+efficacy3,"When I buy products, I tend to try to consider how my use of them will affect the environment.",survey_2a
+efficacy4,It is worth it for the individual consumer to make efforts to preserve and improve the environment.,survey_2a
+efficacy5,Individuals can influence their governments to make meaningful changes to address climate change.,survey_2a
+attentionCheck3,"Please select ""Agree"". This is an attention check.",survey_2a
+efficacy6,The collective actions of individuals can produce meaningful improvements in the world.,survey_2a
+ccBelief1,Climate change is caused by the use of fossil fuels.,survey_2a
+ccBelief2,I believe that climate change is happening.,survey_2a
+attentionCheck4,"Please select ""Agree."" This is an attention check.",survey_2a
+ccBelief3,The world is getting warmer because of human activity.,survey_2a
+ccBelief4,I have been personally impacted by climate change through extreme weather events.,survey_2a
+ccBelief5,Climate change is mostly due to natural causes.,survey_2a
+age,What is your age?,survey_2a
+gender,What is your gender? - Selected Choice,survey_2a
+genderOther,What is your gender? - Other - Text,survey_2a
+race,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice,survey_2a
+raceOther,What is your racial or ethnicity identification? (Mark all that apply) - Other - Text,survey_2a
+education,What is your highest degree or level of education?,survey_2a
+rurality,How would you describe the city that you live in?,survey_2a
+income,What is your annual household income?,survey_2a
+children,Do you have children?,survey_2a
+election,"In the 2020 election, which presidential candidate did you vote for?",survey_2a
+politics,How would you describe your political views?,survey_2a
+PROLIFIC_PID,PROLIFIC_PID,survey_2a
+StartDate,Start Date,survey_2b
+EndDate,End Date,survey_2b
+Status,Response Type,survey_2b
+Progress,Progress,survey_2b
+duration,Duration (in seconds),survey_2b
+Finished,Finished,survey_2b
+RecordedDate,Recorded Date,survey_2b
+ResponseId,Response ID,survey_2b
+RecipientLastName,Recipient Last Name,survey_2b
+RecipientFirstName,Recipient First Name,survey_2b
+RecipientEmail,Recipient Email,survey_2b
+ExternalReference,External Data Reference,survey_2b
+DistributionChannel,Distribution Channel,survey_2b
+UserLanguage,User Language,survey_2b
+Q_RecaptchaScore,Q_RecaptchaScore,survey_2b
+consent,"Title of Study: A Survey of Recent Consumer Habits and Behavior 
+
+
+
+Principal Investigator (PI): Dr. Trisha R. Shrum
+
+
+
+Funder: USDA Hatch Research Grant
+
+
+
+Introduction
+
+You are being invited to take part in this research study because we want to understand recent daily habits and consumer behavior of adults in the US. This study is being conducted by Dr. Shrum at the University of Vermont.
+
+
+
+Purpose
+
+The purpose of this survey is to help develop a behavioral scale to better understand motivations for consumer behavior.
+
+
+
+Study Procedures
+
+If you take part in the study, you will be asked to take a survey. 
+
+The survey questions ask whether or not you have done a large number of common consumer behaviors in the past week. We will also ask a series of questions about your attitudes and experience with weather events. Finally, we will ask for the location of your primary residence. 
+
+You can skip attitude and location questions that you do not feel comfortable answering, but we ask that you be as thorough and accurate as possible. The study will take about 12 minutes to complete in a single session.
+
+
+
+Benefits
+
+As a participant in this research study, there may not be direct benefit for you; however, information from this study may benefit other people now or in the future.
+
+
+
+Risks
+
+Your participation in this study involves minimal foreseeable risks. Your address is considered identifiable information, but you can skip the question if you are not comfortable sharing it. You are also not required to provide your exact address, but we ask that you be as accurate as possible.
+
+We will do our best to protect the information we collect from you and avoid any potential risk for an accidental breach of confidentiality. 
+
+
+
+Costs 
+
+There will be no costs to you for participation in this research study.
+
+
+
+Compensation
+
+For taking part in this research study, you will be reimbursed for your time as specified in the Prolific recruitment process.
+
+
+
+Confidentiality
+Addresses are the only identifying information we will be collecting. However, you can skip the question if you are not comfortable. You also do not need to provide an exact address, but we ask that you be as accurate as possible. 
+
+To protect the confidentiality of respondents, addresses will be stored in a folder with restricted access and will be kept separate from other survey and demographic information. 
+
+
+
+Voluntary Participation/Withdrawal
+
+Taking part in this study is voluntary. You are free to not answer any questions or withdraw at any time. You may choose not to take part in this study, or if you decide to take part, you can change your mind later and withdraw from the study.
+
+
+
+Questions 
+If you have any questions about this study now or in the future, you may contact me, Dr. Trisha Shrum at the following phone number: (802) 656-8117. If you have questions or concerns about your rights as a research participant, then you may contact the Director of the Research Protections Office at (802) 656-5040. 
+
+It is recommended you print or save a pdf of this information sheet for your records before continuing.
+Do you consent to the conditions of this survey?",survey_2b
+prolificID,"What is your Prolific ID?
+
+Please note that this response should auto-fill with the correct ID",survey_2b
+waterWashingNotFull_r,"In the past week, have you ... - run the washing machine without a full load?",survey_2b
+waterDishNotFull_r,"In the past week, have you ... - run the dishwasher without a full load?",survey_2b
+waterShowerStop_,"In the past week, have you ... - turned off the water in the middle of a shower (e.g. while soaping up, shaving, etc.)?",survey_2b
+waterTeethStop_,"In the past week, have you ... - turned off the water while brushing your teeth?",survey_2b
+waterLawn_r,"In the past week, have you ... - watered your lawn?",survey_2b
+homeHeatOrCool,"In the past week, have heated or cooled your home?",survey_2b
+homeBelow68,"In the past week, have you... - set your thermostat at or below 68 degrees?",survey_2b
+homeLowAtNight,"In the past week, have you... - lowered your thermostat at night? (either manually or pre-programmed)",survey_2b
+homeLowAway,"In the past week, have you... - lowered your thermostat when you were away from home?",survey_2b
+homeSpaceHeater,"In the past week, have you... - used a space heater?",survey_2b
+homeAbove72,"In the past week, have you... - set your thermostat at or above 72 degrees?",survey_2b
+homeIncreaseNight,"In the past week, have you... - increased your thermostat at night?",survey_2b
+homeIncreaseAway,"In the past week, have you... - increased your thermostat when you were away from home?",survey_2b
+homeFan,"In the past week, have you... - used a fan to stay cool?",survey_2b
+homeClothesCold_,"In the past week, have you... - used the cold water setting to wash your clothes?",survey_2b
+homeClothesHang_,"In the past week, have you... - hung clean clothes to dry?",survey_2b
+homeClothesDryer_r,"In the past week, have you... - used a clothes dryer?",survey_2b
+homeLightsOff_,"In the past week, have you... - went around your house and turned off lights not in use?",survey_2b
+socialCritical_r,"In the past week, have you ... - posted or shared content on social media that is critical of environmental policies or initiatives?",survey_2b
+socialSupportive_,"In the past week, have you ... - posted any information, articles, or content that are supportive of policies or practices aimed at protecting the environment or promoting sustainability?",survey_2b
+socialReduceImpact_,"In the past week, have you ... - posted ideas or actions to reduce one’s environmental impact on social media?",survey_2b
+socialOutside_,"In the past week, have you ... - spent time outside in nature (e.g., a forest, lake, ocean)?",survey_2b
+socialDocumentary_,"In the past week, have you ... - watched a nature documentary?",survey_2b
+socialRead_,"In the past week, have you ... - read about wildlife, nature, or environmental issues?",survey_2b
+socialGroup_,"In the past week, have you ... - participated in a community group or communicated with others about environmental issues facing your community?",survey_2b
+socialConversation_,"In the past week, have you ... - had a conversation about environmental issues?",survey_2b
+foodOrganicVeg_,"In the past week, have you ... - purchased organic fruits or vegetables?",survey_2b
+foodLocal_,"In the past week, have you ... - purchased locally produced food?",survey_2b
+foodGarden_,"In the past week, have you ... - consumed food from your household's garden?",survey_2b
+foodOwnLunch_,"In the past week, have you ... - brought your own lunch to work or school?",survey_2b
+foodForage_,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_2b
+foodRefrainedDistance_,"In the past week, have you ... - refrained from making a food purchase because it was produced too far away?",survey_2b
+foodMeat_r,"In the past week, have you ... - eaten any meat or seafood?",survey_2b
+foodBeef_r,"In the past week, have you ... - eaten beef?",survey_2b
+foodLunchNoMeat_,"In the past week, have you ... - eaten at least one lunch without meat?",survey_2b
+foodDinnerNoMeat_,"In the past week, have you ... - eaten at least one dinner without meat?",survey_2b
+foodMeatEveryDay_r,"In the past week, have you ... - eaten meat or seafood every day?",survey_2b
+foodCowMilk_r,"In the past week, have you ... - consumed cow's milk?",survey_2b
+foodTofu_,"In the past week, have you ... - consumed tofu or meat-substitutes?",survey_2b
+foodNonDairyMilk_,"In the past week, have you ... - consumed a non-dairy milk alternative?",survey_2b
+foodOatMilk_,"In the past week, have you ... - consumed oat milk?",survey_2b
+foodVegan_,"In the past week, have you ... - eaten a fully vegan diet?",survey_2b
+packDisposableWaterAway_r,"In the past week, have you ... - drank water from a disposable water bottle while away from your home?",survey_2b
+packDisposableWaterHome_r,"In the past week, have you ... - drank water from disposable water bottles while at home?",survey_2b
+packTapWaterHome_,"In the past week, have you ... - drank filtered or unfiltered tap water at home?",survey_2b
+packNonWaterDisposable_r,"In the past week, have you ... - drank a non-water beverage from a disposable plastic bottle?",survey_2b
+packReusableBottle_,"In the past week, have you ... - carried a reusable water bottle with you?",survey_2b
+packReusableMug_,"In the past week, have you ... - used a reusable coffee/tea travel thermos?",survey_2b
+packDisposableCoffee_r,"In the past week, have you ... - used a disposable coffee/tea cup?",survey_2b
+packDeclineBag_,"In the past week, have you ... - declined a bag at the register?",survey_2b
+packReusableBag_,"In the past week, have you ... - brought reusable bags to a store?",survey_2b
+packDisposableBag_r,"In the past week, have you ... - used a disposable bag at a store?",survey_2b
+packContainerToRestaurant_,"In the past week, have you ... - brought your own containers for leftovers or takeout to a restaurant?",survey_2b
+packCarriedUtensils_,"In the past week, have you ... - carried reusable utensils or straws while you were away from home?",survey_2b
+packDisposablePlate_r,"In the past week, have you ... - used a disposable plate?",survey_2b
+packRags_,"In the past week, have you ... - used reusable washcloths or rags for household cleaning?",survey_2b
+packReusableNapkin_,"In the past week, have you ... - used reusable cloth napkins?",survey_2b
+packZiploc_r,"In the past week, have you ... - used plastic wrap or new ziploc bags?",survey_2b
+attentionCheck1,"In the past week, have you ... - Please leave this question blank.",survey_2b
+packPaperTowel_r,"In the past week, have you ... - used paper towels?",survey_2b
+packReducedPlastic_,"In the past week, have you ... - purchased a product with reduced plastic packaging instead of an option with more plastic packaging?",survey_2b
+packGlassAlumOverPlastic_,"In the past week, have you ... - chosen glass or aluminum packaged products over plastic packaged products?",survey_2b
+packAlumOverGlass_,"In the past week, have you ... - chosen aluminum packaged products over glass packaged products (e.g., aluminum cans vs. glass bottles)?",survey_2b
+packRecycledContainer_,"In the past week, have you ... - recycled glass, plastic, or metal containers?",survey_2b
+packRecycledPaper_,"In the past week, have you ... - recycled paper, cardboard, or cardstock?",survey_2b
+packPickUpRecycle_,"In the past week, have you ... - picked up something off of a curb or dumpster to use or recycle?",survey_2b
+packCompost_,"In the past week, have you ... - composted yard or food waste?",survey_2b
+packCarriedTrash_,"In the past week, have you ... - carried waste with you until you could find a recycling or compost bin instead of throwing it in the trash?",survey_2b
+packPickedUpLitter_,"In the past week, have you ... - picked up litter?",survey_2b
+foodForageBSCheck,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_2b
+packThrownAwayRecycling_r,"In the past week, have you ... - thrown away a piece of trash that could have been recycled?",survey_2b
+packPullRecycleFromTrash_,"In the past week, have you ... - pulled something recyclable out of a trash can even though it was not yours?",survey_2b
+packDilutedSoap_,"In the past week, have you ... - diluted soap or liquid products to expand their lifespan?",survey_2b
+packGaveNotThrown_,"In the past week, have you ... - given away or sold an item instead of throwing it away?",survey_2b
+packRepaired_,"In the past week, have you ... - repaired something instead of replacing it?",survey_2b
+packReusedPaperPlasticBags_,"In the past week, have you ... - reused plastic or paper bags?",survey_2b
+purchThrownAwayEarly_r,"In the past week, have you ... - thrown away products before using them up?",survey_2b
+foodThrownBadFood_r,"In the past week, have you ... - thrown out food that had gone bad?",survey_2b
+foodThrownGoodFood_r,"In the past week, have you ... - thrown out food that had not yet gone bad?",survey_2b
+packReusedSingleUse_,"In the past week, have you ... - reused glass or plastic containers that were intended to be single-use (such as a glass beverage bottle or take-out container)?",survey_2b
+purchBoughtSecondHand_,"In the past week, have you ... - bought a second-hand item?",survey_2b
+packGaveToFriend_,"In the past week, have you ... - passed on a product to a friend or family member after deciding it wasn’t working for you?",survey_2b
+purchBuyNothing_,"In the past week, have you ... - browsed or participated in a buy-nothing group?",survey_2b
+purchSlowShipping_,"In the past week, have you ... - chosen a slower shipping speed for package deliveries?",survey_2b
+transWalk_,"In the past week, have you ... - walked as a form of transportation?",survey_2b
+transBike_,"In the past week, have you ... - biked as a form of transportation?",survey_2b
+transPublic_,"In the past week, have you ... - used public transportation?",survey_2b
+transCarpool_,"In the past week, have you ... - carpooled?",survey_2b
+attentionCheck2,"In the past week, have you ... - Please leave this question blank.",survey_2b
+transDrivenAlone_r,"In the past week, have you ... - driven alone?",survey_2b
+transTaxiAlone_r,"In the past week, have you ... - ridden in a taxi/uber alone?",survey_2b
+transTirePressure_,"In the past week, have you ... - checked your tire pressure?",survey_2b
+fashFast_r,"In the past week, have you ... - purchased clothing from an inexpensive fast fashion brand (such as H&M, Walmart, Target, Shein, Amazon, or otherwise)?",survey_2b
+purchOnlyNecessities_,"In the past week, have you ... - avoided buying anything except necessities (ie. food and essentials)?",survey_2b
+fashPutAside_,"In the past week, have you ... - put aside old clothing or belongings to donate or sell?",survey_2b
+fashShoppedSecondHand_,"In the past week, have you ... - shopped for second hand clothing?",survey_2b
+purchTriedSecondHand_,"In the past week, have you ... - tried to buy an item second-hand instead of something new?",survey_2b
+hempPurchased_,"In the past week, have you purchased a product made from hemp (e.g., hemp fabric, CBD oil)?",survey_2b
+hempUsed_,"In the past week, have you used a product made from hemp (e.g., hemp fabric, CBD oil)?",survey_2b
+eweExpGen1,"In the last five years, I have been affected by extreme weather events.",survey_2b
+eweExpGen2,"In the last five years, my friends or family have been affected by extreme weather events.",survey_2b
+eweExpGen3,"In the last five years, extreme weather events have had a financial impact on my life.",survey_2b
+eweExpGen4,"In the last five years, my plans have changed to accommodate extreme weather events.",survey_2b
+eweExpGen5,"In the last five years, I have had to prepare for an extreme weather event.",survey_2b
+eweExpSpec,"Have you personally experienced or been affected by a specific extreme weather event in the last five years? These can include hurricanes, tropical storms, tornadoes, wildfires, droughts, heat waves, blizzards, or floods, for example.",survey_2b
+eweWhatTypes,"In the past 5 years, what types of extreme events have you experienced? Select all that apply. - Selected Choice",survey_2b
+eweWhatTypesText,"In the past 5 years, what types of extreme events have you experienced? Select all that apply. - Other - Text",survey_2b
+eweAffectedHow,"In the past 5 years, how have you been affected by extreme weather events? Select all that apply: - Selected Choice",survey_2b
+eweAffectedHowText,"In the past 5 years, how have you been affected by extreme weather events? Select all that apply: - Other - Text",survey_2b
+eweHowMany,"In the past 5 years, how many extreme weather events have negatively impacted you? (This could include changes to plans, financial impacts, high levels of stress, or health impacts)",survey_2b
+eweSigType,Recall the most significant extreme weather event that affected you in the last five years. What type of event was it? - Selected Choice,survey_2b
+eweSigTypeText,Recall the most significant extreme weather event that affected you in the last five years. What type of event was it? - Other - Text,survey_2b
+eweSigYear,In what year did this event occur?,survey_2b
+eweSigMonth,"In what month did this event occur? This does not have to be precise, but please try to be as accurate as possible.",survey_2b
+eweSigSeverity,"How severely did this extreme weather event affect you? - 0 is not at all, 10 is extreme impact",survey_2b
+eweSigCostPreIns,What was the total value of the damage that it caused (before any insurance payments)?,survey_2b
+eweSigCostPostIns,What was the amount you were liable for after insurance payments?,survey_2b
+attributionGen1,Do you believe that climate change increases the frequency of extreme weather events in the United States?,survey_2b
+attributionGen2,Do you believe that climate change increases the severity of extreme weather events in the United States?,survey_2b
+attributionGen3,Hurricanes and flooding are linked to the changing climate.,survey_2b
+attributionGen4,Wildfires are becoming more common because of warming temperatures.,survey_2b
+attributionGen5,Droughts and water shortages are related to warming temperatures.,survey_2b
+attributionSpec1,The extreme weather event that I experienced would not have occurred without climate change.,survey_2b
+attributionSpec2,The extreme weather event that I experienced was more intense because of climate change.,survey_2b
+attributionSpec3,The extreme weather event that I experienced was not related to climate change.,survey_2b
+attributionSpec4,The extreme weather event that I experienced affected more people than usual because of climate change.,survey_2b
+attributionSpec5,Climate change had nothing to do with the extreme weather event that I experienced.,survey_2b
+Q17.1,Where is your primary residence?,survey_2b
+Q17.2,Have you moved in the last 5 years?,survey_2b
+Q17.3,Where was your last residence?,survey_2b
+psychDist1,The place I grew up is now different because of climate change.,survey_2b
+psychDist2,Climate change has affected my community.,survey_2b
+psychDist3,The effects of climate change are already visible.,survey_2b
+attentionCheck3,"Please select ""Agree"". This is an attention check.",survey_2b
+psychDist4,Climate change will probably not affect me personally.,survey_2b
+psychDist5,Climate change has affected my daily life.,survey_2b
+worry1,"I worry that my quality of life, or that of my children, will decline in the future because of climate change.",survey_2b
+worry2,I am comfortable knowing that climate change will not have much of an impact on the United States.,survey_2b
+worry3,I am concerned that our actions today will make life worse for others in the future.,survey_2b
+worry4,I am concerned that climate change could lead to political turmoil.,survey_2b
+worry5,I am concerned about the economic impacts of climate change.,survey_2b
+socialNorms1,"In my community, people conserve their home energy use.",survey_2b
+socialNorms2,The people who are important to me avoid driving when possible.,survey_2b
+socialNorms3,"In my community, people avoid eating meat.",survey_2b
+attentionCheck4,"Please select ""Agree"". This is an attention check.",survey_2b
+socialNorms4,The people close to me disapprove of wasting energy.,survey_2b
+socialNorms5,The people who are important to me are concerned about climate change.,survey_2b
+PROLIFIC_PID,PROLIFIC_PID,survey_2b
+StartDate,Start Date,survey_3
+EndDate,End Date,survey_3
+Status,Response Type,survey_3
+Progress,Progress,survey_3
+duration,Duration (in seconds),survey_3
+Finished,Finished,survey_3
+RecordedDate,Recorded Date,survey_3
+ResponseId,Response ID,survey_3
+RecipientLastName,Recipient Last Name,survey_3
+RecipientFirstName,Recipient First Name,survey_3
+RecipientEmail,Recipient Email,survey_3
+ExternalReference,External Data Reference,survey_3
+DistributionChannel,Distribution Channel,survey_3
+UserLanguage,User Language,survey_3
+Q_RecaptchaScore,Q_RecaptchaScore,survey_3
+consent,"Title of Study: A Survey of Recent Consumer Habits and Behavior
+
+
+Principal Investigator (PI): Dr. Trisha R. Shrum	
+
+Funder: USDA Hatch Research Grant
+
+
+Introduction
+You are being invited to take part in this research study because we want to understand recent daily habits and consumer behavior of adults in the US. This study is being conducted by Dr. Shrum at the University of Vermont. 
+
+Purpose 
+The purpose of this survey is to help develop a behavioral scale to better understand motivations for consumer behavior.
+
+
+Study Procedures
+
+If you take part in the study, you will be asked to take a survey.
+
+
+The survey questions ask whether or not you have done a large number of common consumer behaviors in the past week. We will also collect information about attitudes, general values, and basic demographics.
+
+You can skip demographic, attitudes, and values questions that you do not feel comfortable answering, but we ask that you be as thorough as possible. The study will take about 13 minutes to complete in a single session. 
+
+Benefits 
+As a participant in this research study, there may not be direct benefit for you; however, information from this study may benefit other people now or in the future.
+
+
+Risks 
+Your participation in this study involves minimal foreseeable risks. 
+
+We will not collect any information that will identify you to protect your confidentiality.
+
+
+Costs 
+There will be no costs to you for participation in this research study.
+
+
+Compensation
+For taking part in this research study, you will be reimbursed for your time as specified in the Prolific recruitment process.
+
+
+Confidentiality
+
+All information collected about you during the course of this study will be stored without any identifiers. No one will be able to match you to your answers. 
+
+Voluntary Participation/Withdrawal
+Taking part in this study is voluntary. You are free to not answer any questions or withdraw at any time. You may choose not to take part in this study, or if you decide to take part, you can change your mind later and withdraw from the study. 
+
+
+
+Questions
+
+If you have any questions about this study now or in the future, you may contact me, Dr. Trisha Shrum at the following phone number: (802) 656-8117. If you have questions or concerns about your rights as a research participant, then you may contact the Director of the Research Protections Office at (802) 656-5040. 
+
+It is recommended you print or save a pdf of this information sheet for your records before continuing.
+
+Do you consent to the conditions of this survey?",survey_3
+prolificID,"What is your Prolific ID?
+
+Please note that this response should auto-fill with the correct ID",survey_3
+waterWashingNotFull_r,"In the past week, have you ... - run the washing machine without a full load?",survey_3
+waterDishNotFull_r,"In the past week, have you ... - run the dishwasher without a full load?",survey_3
+waterShowerStop_,"In the past week, have you ... - turned off the water in the middle of a shower (e.g. while soaping up, shaving, etc.)?",survey_3
+waterTeethStop_,"In the past week, have you ... - turned off the water while brushing your teeth?",survey_3
+homeClothesCold_,"In the past week, have you... - used the cold water setting to wash your clothes?",survey_3
+homeClothesHang_,"In the past week, have you... - hung clean clothes to dry?",survey_3
+homeLightsOff_,"In the past week, have you... - went around your house and turned off lights not in use?",survey_3
+socialSupportive_,"In the past week, have you ... - posted any information, articles, or content that are supportive of policies or practices aimed at protecting the environment or promoting sustainability?",survey_3
+socialReduceImpact_,"In the past week, have you ... - posted ideas or actions to reduce one’s environmental impact on social media?",survey_3
+socialOutside_,"In the past week, have you ... - spent time outside in nature (e.g., a forest, lake, ocean)?",survey_3
+socialDocumentary_,"In the past week, have you ... - watched a nature documentary?",survey_3
+socialRead_,"In the past week, have you ... - read about wildlife, nature, or environmental issues?",survey_3
+socialGroup_,"In the past week, have you ... - participated in a community group focused on environmental issues facing your community?",survey_3
+socialConversation_,"In the past week, have you ... - had a conversation about environmental issues?",survey_3
+foodOrganicVeg_,"In the past week, have you ... - purchased organic fruits or vegetables?",survey_3
+foodLocal_,"In the past week, have you ... - purchased locally produced food?",survey_3
+foodForage_,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_3
+foodMeat_r,"In the past week, have you ... - eaten any meat or seafood?",survey_3
+foodBeef_r,"In the past week, have you ... - eaten beef?",survey_3
+foodLunchNoMeat_,"In the past week, have you ... - eaten at least one lunch without meat?",survey_3
+foodDinnerNoMeat_,"In the past week, have you ... - eaten at least one dinner without meat?",survey_3
+foodMeatEveryDay_r,"In the past week, have you ... - eaten meat or seafood every day?",survey_3
+foodTofu_,"In the past week, have you ... - consumed tofu or meat-substitutes?",survey_3
+foodOatMilk_,"In the past week, have you ... - consumed oat milk?",survey_3
+foodVegan_,"In the past week, have you ... - eaten a fully vegan diet?",survey_3
+packReusableBottle_,"In the past week, have you ... - carried a reusable water bottle with you?",survey_3
+packReusableMug_,"In the past week, have you ... - used a reusable coffee/tea travel thermos?",survey_3
+packReusableBag_,"In the past week, have you ... - brought reusable bags to a store?",survey_3
+packContainerToRestaurant_,"In the past week, have you ... - brought your own containers for leftovers or takeout to a restaurant?",survey_3
+packCarriedUtensils_,"In the past week, have you ... - carried reusable utensils or straws while you were away from home?",survey_3
+packRags_,"In the past week, have you ... - used reusable washcloths or rags for household cleaning?",survey_3
+packReusableNapkin_,"In the past week, have you ... - used reusable cloth napkins?",survey_3
+attentionCheck1,"In the past week, have you ... - Please select ""No"".",survey_3
+packAlumOverGlass_,"In the past week, have you ... - chosen aluminum packaged products over glass packaged products (e.g., aluminum cans vs. glass bottles)?",survey_3
+packRecycledContainer_,"In the past week, have you ... - recycled glass, plastic, or metal containers?",survey_3
+packPickUpRecycle_,"In the past week, have you ... - picked up something off of a curb or dumpster to use or recycle?",survey_3
+packCompost_,"In the past week, have you ... - composted yard or food waste?",survey_3
+packPickedUpLitter_,"In the past week, have you ... - picked up litter?",survey_3
+foodForageBSCheck,"In the past week, have you ... - foraged for wild, edible plants or mushrooms?",survey_3
+packPullRecycleFromTrash_,"In the past week, have you ... - pulled something recyclable out of a trash can even though it was not yours?",survey_3
+packDilutedSoap_,"In the past week, have you ... - diluted soap or liquid products to expand their lifespan?",survey_3
+packReusedPaperPlasticBags_,"In the past week, have you ... - reused plastic or paper bags?",survey_3
+purchBuyNothing_,"In the past week, have you ... - browsed or participated in a buy-nothing group?",survey_3
+purchSlowShipping_,"In the past week, have you ... - chosen a slower shipping speed for package deliveries?",survey_3
+transWalk_,"In the past week, have you ... - walked as a form of transportation?",survey_3
+transPublic_,"In the past week, have you ... - used public transportation?",survey_3
+transCarpool_,"In the past week, have you ... - carpooled?",survey_3
+attentionCheck2,"In the past week, have you ... - Please select ""No"".",survey_3
+attentionCheck3,"Please select ""Agree"". This is an attention check.",survey_3
+pd1,The place I grew up is now different because of climate change.,survey_3
+pd2,Climate change has affected my community.,survey_3
+attentionCheck4,"Please select ""Agree"". This is an attention check.",survey_3
+pd5,Climate change has affected my daily life.,survey_3
+attentionCheck5,"Please select ""Agree"". This is an attention check.",survey_3
+att1,Climate change increases the frequency of extreme weather events.,survey_3
+att2,Climate change increases the severity of extreme weather events.,survey_3
+att3,Hurricanes and floods are linked to the changing climate.,survey_3
+att4,Wildfires are becoming more common because of warming temperatures.,survey_3
+eewe1,"In the last five years, I have been affected by extreme weather events.",survey_3
+eewe3,"In the last five years, extreme weather events have had a financial impact on my life.",survey_3
+eewe5,"In the last five years, I have had to prepare for an extreme weather event.",survey_3
+age,What is your age?,survey_3
+gender,What is your gender? - Selected Choice,survey_3
+genderOtherText,What is your gender? - Other - Text,survey_3
+race,What is your racial or ethnicity identification? (Mark all that apply) - Selected Choice,survey_3
+raceOtherText,What is your racial or ethnicity identification? (Mark all that apply) - Other - Text,survey_3
+education,What is your highest degree or level of education?,survey_3
+rurality,How would you describe the town or city that you live in?,survey_3
+income,What is your annual household income?,survey_3
+children,Do you have children?,survey_3
+election,"In the 2020 election, which presidential candidate did you vote for?",survey_3
+politics,How would you describe your political views?,survey_3
+PROLIFIC_PID,PROLIFIC_PID,survey_3

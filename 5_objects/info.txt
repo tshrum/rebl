@@ -1,0 +1,4 @@
+2024-08-03
+
+- all_rasch_models is a big ole set of preliminary runs with ALL 121 (?) REBL items on all three surveys (1, 2a, 2b). It also includes CML and all the MML variations (that would run at least). Didn't really do anything with those MML models. But they exist.
+- all_rebl_item_names is ALL ~160 REBL items, including seasonal heating and cooling, alternate names for things, etc. It is mostly used to just easily select them all. Although that is kind of obsolete since we added the _ and _r suffixes to the end of REBL items anyway.

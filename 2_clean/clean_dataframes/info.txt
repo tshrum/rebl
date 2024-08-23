@@ -1,0 +1,7 @@
+2024-08-14
+
+Here lie four nice clean dataframes.
+They contain all REBL items, demographics, enviro scales, prolific nonsense, everything.
+They also contain REBL scores and person fit statistics.
+They are named, cleaned, imputed, excluded, and ready for action.
+There is one for 2a, for 2b, for 3, and one for the inner join of 2a and 2b, which has fewer respondents (n = 810).

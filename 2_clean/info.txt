@@ -1,0 +1,5 @@
+2024-08-14
+
+- all_surveys_imported is a list of four surveys (1, 2a, 2b, 3) that has been cleaned, wrangled, and imputed. We use these in the main workflow.
+- rebl_items_final is a character vector with the final set of 24 REBL items
+- clean_dataframes/ contains three data frames (2a, 2b, inner join) with the final REBL items, REBL scores, and prolificID
