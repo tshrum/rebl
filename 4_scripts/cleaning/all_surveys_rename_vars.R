@@ -27,10 +27,13 @@
 
 
 # Load packages
-pacman::p_load(dplyr,
-               readr,
-               purrr,
-               stringr)
+pacman::p_load(
+  dplyr,
+  readr,
+  purrr,
+  stringr,
+  tibble
+)
 
 # Pull in all raw csvs. Doing some extra rigamarole to make sure we only grab 
 # the right ones and that they come out in the right order

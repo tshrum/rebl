@@ -250,7 +250,6 @@ income,What is your annual household income?,survey_1
 children,Do you have children?,survey_1
 election,"In the 2020 election, which presidential candidate did you vote for?",survey_1
 politics,How would you describe your political views?,survey_1
-PROLIFIC_PID,PROLIFIC_PID,survey_1
 StartDate,Start Date,survey_2a
 EndDate,End Date,survey_2a
 Status,Response Type,survey_2a
@@ -467,7 +466,6 @@ income,What is your annual household income?,survey_2a
 children,Do you have children?,survey_2a
 election,"In the 2020 election, which presidential candidate did you vote for?",survey_2a
 politics,How would you describe your political views?,survey_2a
-PROLIFIC_PID,PROLIFIC_PID,survey_2a
 StartDate,Start Date,survey_2b
 EndDate,End Date,survey_2b
 Status,Response Type,survey_2b
@@ -691,9 +689,6 @@ attributionSpec2,The extreme weather event that I experienced was more intense b
 attributionSpec3,The extreme weather event that I experienced was not related to climate change.,survey_2b
 attributionSpec4,The extreme weather event that I experienced affected more people than usual because of climate change.,survey_2b
 attributionSpec5,Climate change had nothing to do with the extreme weather event that I experienced.,survey_2b
-Q17.1,Where is your primary residence?,survey_2b
-Q17.2,Have you moved in the last 5 years?,survey_2b
-Q17.3,Where was your last residence?,survey_2b
 psychDist1,The place I grew up is now different because of climate change.,survey_2b
 psychDist2,Climate change has affected my community.,survey_2b
 psychDist3,The effects of climate change are already visible.,survey_2b
@@ -711,7 +706,6 @@ socialNorms3,"In my community, people avoid eating meat.",survey_2b
 attentionCheck4,"Please select ""Agree"". This is an attention check.",survey_2b
 socialNorms4,The people close to me disapprove of wasting energy.,survey_2b
 socialNorms5,The people who are important to me are concerned about climate change.,survey_2b
-PROLIFIC_PID,PROLIFIC_PID,survey_2b
 StartDate,Start Date,survey_3
 EndDate,End Date,survey_3
 Status,Response Type,survey_3
@@ -860,4 +854,3 @@ income,What is your annual household income?,survey_3
 children,Do you have children?,survey_3
 election,"In the 2020 election, which presidential candidate did you vote for?",survey_3
 politics,How would you describe your political views?,survey_3
-PROLIFIC_PID,PROLIFIC_PID,survey_3

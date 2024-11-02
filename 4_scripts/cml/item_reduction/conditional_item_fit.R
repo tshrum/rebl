@@ -188,8 +188,6 @@ map2(cond_fits$fit_5, cond_fits$fit_final, ~ {
 #'  "socialReduceImpact_"   
 #'  "transCarpool_"
 
-# Don't love these questions anyway
-
 
 
 # Keep only shared items --------------------------------------------------
