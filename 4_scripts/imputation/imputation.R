@@ -209,6 +209,42 @@ stopImplicitCluster()
 toc()
 # 8 minutes
 
+# Check against existing file
+old_outputs <- readRDS('5_objects/imputation/all_survey_imp_outputs.rds')
+get_str(outputs)
+get_str(old_outputs)
+
+# Check survey 2b
+get_str(outputs$survey_2b)
+get_str(old_outputs$survey_2b[[9]])
+
+# Compare OOB
+mean(outputs$survey_2b$OOBerror)
+mean(old_outputs$survey_2b[[9]]$OOBerror)
+# Pretty fuckin close
+
+# Compare rebl items only?
+new <- outputs$survey_2b$ximp
+old <- old_outputs$survey_2b[[9]]$ximp
+identical(new, old)
+# Samesies! 
+
+# Check with 2a
+new2 <- outputs$survey_2a$ximp
+old2 <- old_outputs$survey_2a[[9]]$ximp
+identical(new2, old2)
+# Nopers
+
+# Check OOB here too
+mean(outputs$survey_2a$OOBerror)
+mean(old_outputs$survey_2a[[9]]$OOBerror)
+# Presumably not very different though, OOB is so close
+
+get_str(new2)
+get_str(old2)
+identical(names(new2), names(old2))
+# Let's go ahead with it and see how different it comes out I guess
+
 
 
 # Save and Clear ----------------------------------------------------------
@@ -218,7 +254,7 @@ toc()
 saveRDS(outputs, '5_objects/imputation/all_survey_imp_outputs.rds')
 
 # Also going to save the tuning grid to be used in next script
-saveRDS(tuning_grid, '5_objects/imputation/quick_grid.rds')
+# saveRDS(tuning_grid, '5_objects/imputation/quick_grid.rds')
 
 # Clear environment of objects
 clear_data()

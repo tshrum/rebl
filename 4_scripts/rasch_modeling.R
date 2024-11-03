@@ -49,19 +49,28 @@ surveys_rebl <- map(surveys, ~ {
 # Running this in parallel.
 
 # Export objects and packages to workers, set up workers, run models, end
-config <- furrr_options(globals = 'surveys_rebl',
-                        packages = c('eRm'))
+config <- furrr_options(
+  globals = 'surveys_rebl',
+  packages = c('eRm'),
+  seed = TRUE
+)
+
+print_time()
+tic()
 plan(multisession, workers = availableCores(omit = 1))
 rasch_models <- future_map(surveys_rebl, RM, .options = config)
 plan(sequential)
-
+toc()
 
 
 # Evaluate Rasch Models ---------------------------------------------------
 
 
 # Run suite of tests on Rasch models. This also runs in parallel
+print_time()
+tic()
 all_tests <- test_rasch_model(surveys, all_rebl_items, rasch_models)
+toc()
 # ~ 10 minute run time
 
 

@@ -76,6 +76,14 @@ varwise_errors <- map(best_imp_outputs, ~ {
 
 # Recombine Imputed Data with Surveys -------------------------------------
 
+# TEST
+best_imp_outputs <- imputed_surveys
+varwise_errors <- map(best_imp_outputs, ~ {
+  data.frame(
+    var = names(.x$ximp),
+    OOBerror = .x$OOBerror
+  )
+})
 
 #' Function to keep the imputed data vars and recombine with old original vars
 #' that were not imputed, like demographics, ewe questions, prolificID. 

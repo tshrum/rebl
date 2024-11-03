@@ -26,16 +26,18 @@
 
 
 # Packages
-pacman::p_load(dplyr,
-               purrr,     # map
-               eRm,
-               iarm,      # boot_fit
-               tidyr,
-               tictoc,    # timer
-               furrr,     # parallel map
-               profvis,   # profiling
-               tibble,
-               parallelly)
+pacman::p_load(
+  dplyr,
+  purrr,
+  eRm,
+  iarm, 
+  tidyr,
+  tictoc,
+  furrr, 
+  profvis,
+  tibble,
+  parallelly
+)
 
 # Load just CML models for just surveys 2a and 2b
 cml_models <- readRDS('5_objects/cml/all_items/rasch_models.rds') %>% 
@@ -203,6 +205,16 @@ final_item_fits
 final_item_fits$rebl_item
 # 38 items
 
+# COMPARE AGAINST OLD
+# new_items <- final_item_fits$rebl_item
+# old_items <- readRDS('5_objects/cml/item_reduction/rebl_items_cond_fit_38.rds')
+
+# identical(new_items, old_items)
+# setdiff(new_items, old_items)
+# intersect(new_items, old_items)
+
+# new_items %>% sort
+# old_items %>% sort
 
 
 # Save and Clear ----------------------------------------------------------
