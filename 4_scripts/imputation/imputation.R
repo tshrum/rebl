@@ -24,17 +24,19 @@
 # Load Data ---------------------------------------------------------------
 
 
-pacman::p_load(dplyr,
-               missForest,
-               foreach,
-               doParallel,
-               parallelly,
-               doParallel,
-               doRNG,
-               purrr,
-               furrr,
-               tictoc,
-               skimr)
+pacman::p_load(
+  dplyr,
+  missForest,
+  foreach,
+  doParallel,
+  parallelly,
+  doParallel,
+  doRNG,
+  purrr,
+  furrr,
+  tictoc,
+  skimr
+)
 
 # Load miss_forest function
 source('3_functions/run_miss_forest.R')
@@ -174,6 +176,38 @@ outputs <- imap(surveys_ready_to_impute, \(survey, name) {
 
 stopImplicitCluster()
 toc()
+
+
+
+# Imputation Runs 2 ---------------------------------------------------------
+
+
+# Running with just ntree = 500 and mtry = 15 to save time to make it easier
+# to reproduce.
+tic()
+registerDoParallel(cores = availableCores(omit = 1))
+getDoParWorkers()
+registerDoRNG(seed = 1.618)
+foreach(i = 1:3) %dorng% sqrt(i)
+
+print_time('Starting imputation run at:')
+outputs <- imap(surveys_ready_to_impute, \(survey, name) {
+  print_time(paste0('Starting ', name, ' at:'))
+  result <- missForest(
+    xmis = survey,
+    ntree = 500,
+    mtry = 15,
+    variablewise = TRUE,
+    verbose = FALSE,
+    parallelize = 'variables'
+  )
+  print_time('\nDone!')
+  return(result)
+})
+
+stopImplicitCluster()
+toc()
+# 8 minutes
 
 
 

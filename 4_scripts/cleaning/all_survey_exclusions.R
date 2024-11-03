@@ -165,11 +165,10 @@ map(surveys, dim)
 map(surveys, get_str)
 
 # Get rid of attention checks and BS Check (but keep first forage question)
-surveys <- map(surveys, ~ select(.x, 
-                                 -matches('attention|foodForageBSCheck')))
+surveys <- map(surveys, ~ select(.x, -matches('attention|foodForageBSCheck')))
 
 # Save and clear
 saveRDS(surveys, '5_objects/cleaning/all_surveys_excluded.rds')
 
-
+# Clear data objects
 clear_data()

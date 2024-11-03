@@ -146,9 +146,9 @@ exclude_cases <- function(df,
   # Save number who started to calculate percentage
   started_in_window <- nrow(df)
 
-    
   # How many completed -----
-  df <- filter(df, Finished == 'True')
+  df <- filter(df, Finished == 'TRUE')
+  # Note that this is a character TRUE, not boolean TRUE
   
   # Completion rate
   completed <- nrow(df)

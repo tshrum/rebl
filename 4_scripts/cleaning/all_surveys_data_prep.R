@@ -260,7 +260,6 @@ surveys <- map(surveys, ~ {
     select(
       -c(
         any_of(seasonal_questions),
-        PROLIFIC_PID,
         matches('Recipient'),
         matches('LocationL'),
         UserLanguage,

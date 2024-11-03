@@ -2,7 +2,7 @@ REBL Scale
 ================
 Dr. Trisha Shrum, Chris Donovan
 
-August 23, 2024
+November 03, 2024
 
 - [Introduction](#introduction)
 - [Navigating the Project](#navigating-the-project)

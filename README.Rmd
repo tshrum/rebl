@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 This is the repository for the Repeated Environmental Behavior Latent (REBL) Scale project. It contains all the code to build the REBL scale from raw data through visualizations. 
 
-Clean .rds files including REBL scores can be found in the `2_clean/clean_dataframes/` folder. Clean .csv files are in the `2_clean/clean_dataframes/csv/` folder. 
+Clean .rds files including REBL scores can be found in the `2_clean/clean_dataframes/` folder. Clean .csv files are in the `2_clean/clean_dataframes/csv/` folder.
 
 # Navigating the Project
 
