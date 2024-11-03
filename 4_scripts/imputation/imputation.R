@@ -211,14 +211,59 @@ toc()
 
 
 
+# Imputation Runs 3 ---------------------------------------------------------
+
+
+# Doing this with original imputations amounts from full run
+# 1: 20/2000
+# 2a: 15/1000
+# 2b: 10/500 
+
+# But also a bigger grid for the real run
+# full_grid <- expand.grid(
+  # mtry = c(7, 10, 15, 20),
+  # ntree = c(100, 250, 500, 1000)
+# )
+
+full_grid <- list(
+  c(20, 2000),
+  c(15, 1000),
+  c(10, 500),
+  c(15, 250)
+)
+
+print_time('Starting whole shebang at:')
+tic()
+plan(multisession, workers = availableCores(omit = 1))
+config <- furrr_options(seed = 42)
+
+all_imputations <- future_map2(surveys_ready_to_impute, 
+                               full_grid, 
+                               \(survey, grid) {
+  missForest(
+    xmis = survey,
+    mtry = grid[1],
+    ntree = grid[2],
+    verbose = FALSE,
+    variablewise = TRUE
+  )
+}, .options = config, .progress = TRUE)
+
+plan(sequential)
+tic()
+
+saveRDS(all_imputations, 'shit/comparisons/all_imps_big_hypers.RDS')
+
+
+
 # Save and Clear ----------------------------------------------------------
 
 
 # Save full output, all imputations, with errors and everything
-saveRDS(outputs, '5_objects/imputation/all_survey_imp_outputs.rds')
+# saveRDS(outputs, '5_objects/imputation/all_survey_imp_outputs.rds')
 
 # Also going to save the tuning grid to be used in next script
-saveRDS(tuning_grid, '5_objects/imputation/quick_grid.rds')
+# saveRDS(tuning_grid, '5_objects/imputation/quick_grid.rds')
 
 # Clear environment of objects
 clear_data()
