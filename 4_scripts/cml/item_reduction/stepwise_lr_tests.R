@@ -57,18 +57,20 @@ get_str(models)
 # See if LR tests pass here:
 map(models, LRtest)
 # $survey_2a
+# 
 # Andersen LR-test: 
-#   LR-value: 65.026 
-# Chi-square df: 37 
-# p-value:  0.003 
+#   LR-value: 45.488 
+# Chi-square df: 38 
+# p-value:  0.188 
+# 
 # 
 # $survey_2b
+# 
 # Andersen LR-test: 
-#   LR-value: 36.123 
-# Chi-square df: 37 
-# p-value:  0.51 
+#   LR-value: 56.264 
+# Chi-square df: 38 
+# p-value:  0.028 
 
-# Survey 2a fails, 2b passes
 
 # Save these
 saveRDS(models, '5_objects/cml/item_reduction/cond_fit_reduced_models.rds')
@@ -89,9 +91,8 @@ lr_outputs <- imap(models, ~ {
 })
 toc()
 
-# 2a: removed packPaperTowel_r, foodNonDairyMilk_
-# 2b: removed nothing
-
+# nothing from 2a
+# 2b: homeClothesCold_
 
 
 # Explore LR Output -------------------------------------------------------
@@ -115,7 +116,7 @@ colnames(lr_outputs[[2]]$X)
 shared_items <- intersect(colnames(lr_outputs[[1]]$X), 
                           colnames(lr_outputs[[2]]$X))
 shared_items
-# Down to 36
+# Down to 38
 
 
 
@@ -128,18 +129,21 @@ map(test_dat, get_str)
 test_models <- map(test_dat, RM)
 (test_lr <- map(test_models, LRtest))
 # $survey_2a
+# 
 # Andersen LR-test: 
-#   LR-value: 46.453 
-# Chi-square df: 35 
-# p-value:  0.093 
+#   LR-value: 45.142 
+# Chi-square df: 37 
+# p-value:  0.168 
+# 
 # 
 # $survey_2b
+# 
 # Andersen LR-test: 
-#   LR-value: 30.391 
-# Chi-square df: 35 
-# p-value:  0.69
+#   LR-value: 45.606 
+# Chi-square df: 37 
+# p-value:  0.157 
 
-# Both pass here, but 2a is creeping pretty close to failing
+# Both pass here
 
 # Check visual goodness of fit
 map(test_lr, plotGOF)

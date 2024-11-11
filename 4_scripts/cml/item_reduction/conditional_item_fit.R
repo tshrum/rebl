@@ -203,6 +203,11 @@ final_item_fits
 final_item_fits$rebl_item
 # 38 items
 
+# setdiff(old, final_item_fits$rebl_item)
+# setdiff(final_item_fits$rebl_item, old)
+# intersect(old, final_item_fits$rebl_item)
+# old was 38, new is 39. 35 in common
+
 
 
 # Save and Clear ----------------------------------------------------------

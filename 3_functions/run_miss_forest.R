@@ -97,9 +97,7 @@ choose_best_runs <- function(imp_surveys,
                              variablewise = TRUE) {
   if (variablewise == TRUE) {
   ## For variablewise -----
-    
     results <- map2(imp_surveys, names(imp_surveys), ~ {
-      
       # Get mean PFC and add to each output
       imp_surveys <- map(.x, \(imp_output) {
         imp_output[['mean_PFC']] <- mean(imp_output$OOBerror)
@@ -108,7 +106,6 @@ choose_best_runs <- function(imp_surveys,
           )
         return(imp_output)
       })
-      
       # Index of which run was the best (to then pull parameter values)
       index <- which.min(map_dbl(imp_surveys, \(single_imp) single_imp$mean_PFC))
       

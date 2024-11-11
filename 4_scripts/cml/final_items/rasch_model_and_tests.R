@@ -33,7 +33,7 @@ source('3_functions/rasch_test_functions.R')
 
 # Load clean surveys 2a, 2b, and 3
 surveys <- readRDS('2_clean/all_surveys_imputed.rds') %>% 
-  .[!names(.) %in% 'survey_1']
+  .[names(.) %in% c('survey_2a', 'survey_2b')]
 
 # Names of REBL items (26 with consistent items, 22 without)
 final_items <- readRDS('2_clean/rebl_items_final.rds')
@@ -80,7 +80,7 @@ map(gof, summary)
 #' Methods from: https://bookdown.org/chua/new_rasch_demo2/MD-fit.html#evaluating-measurement-quality-from-the-perspective-of-rasch-measurement-theory
 
 # How many factors to extract? Looking at both 2a and 3
-map(list(surveys$survey_2a, surveys$survey_3), \(survey) {
+map(list(surveys$survey_2a), \(survey) {
   results <- list()
   results$vss <- survey %>% 
     select(all_of(final_items)) %>% 
@@ -90,13 +90,11 @@ map(list(surveys$survey_2a, surveys$survey_3), \(survey) {
     fa.parallel()
   return(results)
 })
-# Suggets up to 5f/4c for 2a, 4f/3c for 3
 
-# Let's go with 4 components - again using survey 3 as test set, not diagnostic
-pcar <- map(models, ~ test_uni_pcar(.x, rotate = 'Promax', n_factors = 4))
+# Let's go with 5 components (parallel) 
+pcar <- map(models, ~ test_uni_pcar(.x, rotate = 'Promax', n_factors = 5))
 pcar[[1]]
 pcar[[2]]
-pcar[[3]]
 
 # Check rotation
 pcar[[1]]$rotation
@@ -174,7 +172,7 @@ all_tests <- test_rasch_model(surveys, final_items, models)
 
 
 # Pathway and item maps
-iwalk(surveys[names(surveys) %in% c('survey_2a', 'survey_3')], \(survey, name) {
+iwalk(surveys[names(surveys) %in% c('survey_2a', 'survey_2b')], \(survey, name) {
   model <- survey %>% 
     select(all_of(final_items)) %>% 
     RM()
@@ -182,7 +180,6 @@ iwalk(surveys[names(surveys) %in% c('survey_2a', 'survey_3')], \(survey, name) {
   plotPWmap(model, mainitem = name)
   plotPImap(model, sorted = TRUE, main = name)
 })
-# survey 3 has some clumping, but fits better than 2a
 
 
 

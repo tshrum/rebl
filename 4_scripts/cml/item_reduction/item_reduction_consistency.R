@@ -217,8 +217,13 @@ final_items <- consistent_items %>%
       'transPublic_',
       'transWalk_',
       'transBike_',
+      'transCarpool_',
       'foodOwnLunch_',
-      'foodForage_'
+      'foodForage_',
+      'foodMeat_r', ###
+      'packPaperTowel_r', ###
+      'foodRefrainedDistance_',
+      'purchBuyNothing_' # THIS ONE MADE A HUGE DIFFERENCE
     )
   ) %>%
   pull(rebl_item) %>%
@@ -226,6 +231,11 @@ final_items <- consistent_items %>%
 
 final_items
 # Final set of 24 here
+
+# old
+# setdiff(old, final_items)
+# setdiff(final_items, old)
+# Only one is missing from validation set - paper towels
 
 
 

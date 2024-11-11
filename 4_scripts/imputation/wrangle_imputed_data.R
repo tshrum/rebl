@@ -49,20 +49,13 @@ tuning_grid <- readRDS('5_objects/imputation/quick_grid.rds')
 # Check out imputation outputs
 get_str(imputed_surveys)
 
-# Select the run with lowest error for each survey. Hyperparameters used will
-# be added to list output for each survey.
-best_imp_outputs <- choose_best_runs(imputed_surveys, tuning_grid)
-# Note that survey 1 caps out, but 2a and 2b do fine with the grid
+# NOTE: Not choosing best runs because we didn't use a tuning grid to save time
+# best_imp_outputs <- choose_best_runs(imputed_surveys, tuning_grid)
+# Just reassign as best output and continue
+best_imp_outputs <- imputed_surveys
 
 get_str(best_imp_outputs)
 # This is the single best output for each survey
-
-# Check out errors and tuning parameters
-map(best_imp_outputs, ~ .x$OOBerror)
-map(best_imp_outputs, ~ .x$mean_PFC)
-map(best_imp_outputs, ~ .x$mean_nonzero_PFC)
-map(best_imp_outputs, ~ .x$tuning)
-map(best_imp_outputs, ~ get_str(.x$ximp))
 
 # Save varwise errors for reporting
 varwise_errors <- map(best_imp_outputs, ~ {
@@ -114,7 +107,7 @@ saveRDS(all_surveys_imputed, '2_clean/all_surveys_imputed.rds')
 saveRDS(varwise_errors, '5_objects/imputation/varwise_errors.rds')
 walk2(varwise_errors, names(varwise_errors), ~ {
   .x %>% 
-    write_csv(paste0('6_outputs/imputation/varwise_errors_',
+    write.csv(paste0('6_outputs/imputation/varwise_errors_',
                      .y,
                      '.csv'))
 })

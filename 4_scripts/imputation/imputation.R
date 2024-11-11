@@ -143,71 +143,43 @@ map(surveys_ready_to_impute, get_str)
 
 
 
-# Imputation Runs ---------------------------------------------------------
+# Tuning Grid -------------------------------------------------------------
 
 
-# Relatively small tuning grid
-tuning_grid <- expand.grid(
-  mtry = c(7, 10, 15),
-  ntree = c(100, 250, 500)
+# Not using tuning grid anymore to save time. But will keep this dummy grid
+# in place
+tuning_grid <- data.frame(
+  mtry = 15,
+  ntree = 500
 )
 
-tic()
-registerDoParallel(cores = availableCores(omit = 1))
-getDoParWorkers()
-registerDoRNG(seed = 1.618)
-foreach(i = 1:3) %dorng% sqrt(i)
 
-outputs <- imap(surveys_ready_to_impute, \(survey, name) {
-  print_time(paste0('Starting ', name, ' at:'))
-  result <- map(1:nrow(tuning_grid), \(row) {
-    missForest(
+
+# Reworked Run ------------------------------------------------------------
+
+
+#' Doing this sequentially to avoid the core number problem. This will be 
+#' substantially slower, unfortunately, so I'm also reducing the hyperparameters
+#' to a more manageable 15/500
+{
+  tic()
+  print_time('Starting imputation run at:')
+  outputs <- imap(surveys_ready_to_impute, \(survey, name) {
+    print_time(paste0('Starting ', name, ' at:'))
+    set.seed(42)
+    result <- missForest(
       xmis = survey,
-      ntree = tuning_grid$ntree[row],
-      mtry = tuning_grid$mtry[row],
+      ntree = 500,
+      mtry = 15,
       variablewise = TRUE,
-      verbose = FALSE,
-      parallelize = 'variables'
+      verbose = FALSE
     )
+    print_time('\nDone!')
+    return(result)
   })
-  print_time('\nDone!')
-  return(result)
-})
-
-stopImplicitCluster()
-toc()
-
-
-
-# Imputation Runs 2 ---------------------------------------------------------
-
-
-# Running with just ntree = 500 and mtry = 15 to save time to make it easier
-# to reproduce.
-tic()
-registerDoParallel(cores = availableCores(omit = 1))
-getDoParWorkers()
-registerDoRNG(seed = 1.618)
-foreach(i = 1:3) %dorng% sqrt(i)
-
-print_time('Starting imputation run at:')
-outputs <- imap(surveys_ready_to_impute, \(survey, name) {
-  print_time(paste0('Starting ', name, ' at:'))
-  result <- missForest(
-    xmis = survey,
-    ntree = 500,
-    mtry = 15,
-    variablewise = TRUE,
-    verbose = FALSE,
-    parallelize = 'variables'
-  )
-  print_time('\nDone!')
-  return(result)
-})
-
-stopImplicitCluster()
-toc()
-# 8 minutes
+  toc()
+}
+# 8-10 minutes sequential
 
 
 

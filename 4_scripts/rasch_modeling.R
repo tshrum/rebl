@@ -49,11 +49,14 @@ surveys_rebl <- map(surveys, ~ {
 # Running this in parallel.
 
 # Export objects and packages to workers, set up workers, run models, end
+tic()
 config <- furrr_options(globals = 'surveys_rebl',
-                        packages = c('eRm'))
-plan(multisession, workers = availableCores(omit = 1))
+                        packages = c('eRm'),
+                        seed = TRUE)
+plan(multisession, workers = 3)
 rasch_models <- future_map(surveys_rebl, RM, .options = config)
 plan(sequential)
+toc()
 
 
 
