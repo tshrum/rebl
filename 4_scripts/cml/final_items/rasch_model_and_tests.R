@@ -90,7 +90,7 @@ map(list(surveys$survey_2a, surveys$survey_3), \(survey) {
     fa.parallel()
   return(results)
 })
-# Suggets up to 5f/4c for 2a, 4f/3c for 3
+# Suggests up to 5f/4c for 2a, 4f/3c for 3
 
 # Let's go with 4 components - again using survey 3 as test set, not diagnostic
 pcar <- map(models, ~ test_uni_pcar(.x, rotate = 'Promax', n_factors = 4))
@@ -124,7 +124,7 @@ lr_tests <- map(list(surveys$survey_2a, surveys$survey_3), \(survey) {
   return(out)
 })
 
-get_str(lr_tests)
+str(lr_tests)
 
 
 
@@ -133,7 +133,7 @@ get_str(lr_tests)
 
 # Plain old item fits
 fits <- map(models, get_fits)
-get_str(fits)
+str(fits)
 
 
 

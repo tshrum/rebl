@@ -26,8 +26,7 @@ pacman::p_load(dplyr,
                tibble)
 
 # Pull surveys 2a and 2b
-surveys <- readRDS('2_clean/all_surveys_imputed.rds') %>% 
-  .[names(.) %in% c('survey_2a', 'survey_2b')]
+surveys <- readRDS('2_clean/all_surveys_imputed.rds')[2:3]
 
 # List of all REBL names to pull out those vars only
 rebl_items <- readRDS('5_objects/cml/item_reduction/rebl_items_step_lr_36.rds')
@@ -232,7 +231,8 @@ final_items
 # Save and Clear ----------------------------------------------------------
 
 
-# Save this vector of final names in clean folder.
+# Save this vector of final names for other analyses. Also in clean folder
+saveRDS(final_items,'5_objects/cml/item_reduction/rebl_items_final.rds')
 saveRDS(final_items, '2_clean/rebl_items_final.rds')
 
 clear_data()

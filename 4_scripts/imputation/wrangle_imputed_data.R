@@ -1,5 +1,5 @@
 # wrangle imputed data
-# 2024-08-08 update
+# 2024-04-09
 
 # Here we are taking the list of full outputs from missForest imputation, 
 # identifying the runs with the lowest error, removing the variables that we 
@@ -37,7 +37,7 @@ imputed_surveys <- readRDS('5_objects/imputation/all_survey_imp_outputs.rds')
 
 # Load tuning grid from imputation.R. We will use it to preserve parameters
 # for reporting.
-tuning_grid <- readRDS('5_objects/imputation/quick_grid.rds')
+tuning_grid <- readRDS('5_objects/imputation/full_grid.rds')
 
 
 

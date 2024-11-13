@@ -46,14 +46,17 @@ surveys_rebl <- map(surveys, ~ {
 
 
 # Run CML model on all surveys using eRm
-# Running this in parallel.
+# Also doing this in parallel, one worker per model.
 
 # Export objects and packages to workers, set up workers, run models, end
 config <- furrr_options(globals = 'surveys_rebl',
-                        packages = c('eRm'))
-plan(multisession, workers = availableCores(omit = 1))
-rasch_models <- future_map(surveys_rebl, RM, .options = config)
+                        packages = c('dplyr', 'purrr', 'eRm'))
+plan(multisession, workers = 3)
+rasch_models[['cml']] <- future_map(surveys_rebl, RM, .options = config)
 plan(sequential)
+
+map(rasch_models[['cml']], summary)
+
 
 
 

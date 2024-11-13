@@ -1,23 +1,22 @@
-# Imputation
-# 2024-08-21 update
+# imputation
+# 2024-11-13
 
-#' Using missForest to impute prepped datasets. Note that for surveys 1, 2a, and
-#' 2b, the predictors are all REBL items, demographics, and enviro scales (for
-#' survey 1). In Survey 3, we are only working with the 24 final REBL items and
-#' demographics. In the next script, we will throw out the imputed demographics
-#' and replace them with the unimputed demograhics because there really isn't a
-#' way to choose which variables get imputed in this function. They are either
-#' in the dataset or not. This is essentially the same as making them 
-#' predictors, but not imputing them.
+# Using missForest to impute prepped datasets
 
 # Inputs: 
-# 1. All prepped survey datasets (all_surveys_prepped.rds)
+# 1. All three prepped survey datasets (all_surveys_prepped.rds)
 
 # Outputs:
-# 1. List of full outputs from all runs of missForest on all surveys. This will
-#   then be wrangled in the wrangle_imputed_data.R script to get nice clean
-#   datasets for analysis. Also includes a copy of the tuning grid and OOB
-#   error to report. 
+# 1. List of full outputs from all runs of missForest on all three surveys.
+#   This will then be wrangled in the wrangle_imputed_data.R script to
+#   get nice clean datasets for analysis.
+
+# Notes:
+# 1. This takes around 1.5 hours to run with current tuning grid.
+# 2. Currently (2024-04-09) we saved a PRELIM set of imputation outputs to 
+#   work with. This will 100% require some tweaking as to what vars we want to 
+#   impute and with which predictors. Moving ahead with this for now though.
+# 3. See last section for things that can be improved in imputation.
 
 
 
@@ -29,36 +28,31 @@ pacman::p_load(
   missForest,
   foreach,
   doParallel,
-  parallelly,
-  doParallel,
-  doRNG,
   purrr,
-  furrr,
   tictoc,
   skimr
 )
 
-# Load miss_forest function
+# Load helper functions
 source('3_functions/run_miss_forest.R')
+source('3_functions/helper_functions/print_time.R')
 
 # Load all surveys
 surveys <- readRDS('5_objects/cleaning/all_surveys_excluded.rds')
 
-# Vector of 'front matter' - qualtrics things. Will use this later to remove 
-# them from surveys.
-front_matter <- surveys[[1]] %>% 
-  select(StartDate:prolificID) %>% 
-  names()
-
 
 
 # Prep All Surveys --------------------------------------------------------
+
 ## Reduce to Relevant Columns ----------------------------------------------
 
 
+map(surveys, get_str)
+# And we need everything to be either factor or numeric for missForest
+# Also missForest does not tolerate tibbles? Must be OG data frame
+
 # Use matching pattern to remove groups of questions that shouldn't be here
-# for this, like EEWE questions. We don't want them either to be imputed NOR to 
-# be used as predictors to impute other variables. 
+# for this, like all ewe questions, 
 matching_pattern <- paste(
   c(
     '^ewe',
@@ -70,10 +64,7 @@ matching_pattern <- paste(
     'race\\w+',     # Removing race dummies (raceWhite), but keeping race
     'BIPOC',        # Redundant with race
     'attribution',
-    '^att[0-9]',
     'psychDist',
-    '^pd[0-9]',
-    '^eewe[0-9]',
     '^worry\\d{1}', # Removing worry1, worry2, etc, but not ccWorry
     'socialNorms',
     'Other',        # Get rid of genderOther too - too many NAs
@@ -94,7 +85,7 @@ matching_pattern <- paste(
 surveys_vars_to_impute <- map(surveys, ~ {
   
   .x |> 
-    select(-any_of(front_matter),
+    select(-c(StartDate:prolificID),
            -any_of(matches(matching_pattern)))
 })
 
@@ -120,11 +111,13 @@ map(surveys_vars_to_impute, get_str)
 
 #' We will remove these both because they mess with missForest and also because
 #' they will be trash items anyway. Note that they are only bad in survey 1. In 
-#' survey 2, foodOwnLunch does fine.
+#' survey 2, foodOwnLunch does fine. Weird that there are so many missing in 
+#' survey 1.
 
 # Remove bad items from survey 1
+
 surveys_vars_to_impute[[1]] <- surveys_vars_to_impute[[1]] %>% 
-  select(-any_of(bad_items))
+  select(-bad_items)
 
 map(surveys_vars_to_impute, get_str)
 
@@ -133,81 +126,69 @@ map(surveys_vars_to_impute, get_str)
 ## Clean up DF -------------------------------------------------------------
 
 
-# Convert everything to factor for missForest, and convert to DF (not tibble)
+# Now for the data to work with, we need them to be factor and a data frame,
+# not a tibble. I've never seen this matter before!
 surveys_ready_to_impute <- map(surveys_vars_to_impute, ~ {
   .x |> 
       mutate(across(everything(), as.factor)) |> 
       as.data.frame()
 })
+  
 map(surveys_ready_to_impute, get_str)
 
 
 
-# Imputation Runs ---------------------------------------------------------
+# Prep for Parallel and Forests -------------------------------------------
 
 
-# Relatively small tuning grid
-tuning_grid <- expand.grid(
-  mtry = c(7, 10, 15),
-  ntree = c(100, 250, 500)
+# Make a tuning grid to try different combinations of hyperparameters and 
+# select the one with the lowest estimated error. For now we are keeping this
+# as a little baby grid to make sure things run smoothly before we finish
+# fiddling with cleaning the data.
+
+# Tuning grid
+full_grid <- expand.grid(
+  mtry = c(7, 10, 15, 20),
+  ntree = c(100, 250, 500, 1000)
 )
 
-tic()
-registerDoParallel(cores = availableCores(omit = 1))
-getDoParWorkers()
-registerDoRNG(seed = 1.618)
-foreach(i = 1:3) %dorng% sqrt(i)
+#' Set number of cores. Note that this is hard-coded to 7 to reproduce the 
+#' original results.
+n_cores <- 7
 
-outputs <- imap(surveys_ready_to_impute, \(survey, name) {
-  print_time(paste0('Starting ', name, ' at:'))
-  result <- map(1:nrow(tuning_grid), \(row) {
-    missForest(
-      xmis = survey,
-      ntree = tuning_grid$ntree[row],
-      mtry = tuning_grid$mtry[row],
+
+
+# Imputation --------------------------------------------------------------
+
+
+# Make backend for parallel processing with one less core than available
+cluster <- makeCluster(n_cores)
+registerDoParallel(cluster)
+
+tic()
+imputed_surveys <- map2(
+  surveys_ready_to_impute, names(surveys_ready_to_impute), ~ {
+
+    print_time(paste('Starting', .y, 'at'))
+
+    run_miss_forest(
+      df = .x,
+      tuning_grid = full_grid,
+      parallelize = 'variables',
       variablewise = TRUE,
       verbose = FALSE,
-      parallelize = 'variables'
+      seed = 42
     )
   })
-  print_time('\nDone!')
-  return(result)
-})
 
-stopImplicitCluster()
 toc()
+# Take 1: 1 hr 3 minutes for survey 1. 1 hr 20 minutes total
+# Take 2: 1 hr 30 minutes total
 
-
-
-# Imputation Runs 2 ---------------------------------------------------------
-
-
-# Running with just ntree = 500 and mtry = 15 to save time to make it easier
-# to reproduce.
-tic()
-registerDoParallel(cores = availableCores(omit = 1))
-getDoParWorkers()
-registerDoRNG(seed = 1.618)
-foreach(i = 1:3) %dorng% sqrt(i)
-
-print_time('Starting imputation run at:')
-outputs <- imap(surveys_ready_to_impute, \(survey, name) {
-  print_time(paste0('Starting ', name, ' at:'))
-  result <- missForest(
-    xmis = survey,
-    ntree = 500,
-    mtry = 15,
-    variablewise = TRUE,
-    verbose = FALSE,
-    parallelize = 'variables'
-  )
-  print_time('\nDone!')
-  return(result)
-})
-
+# End parallel backend
 stopImplicitCluster()
-toc()
-# 8 minutes
+
+get_str(imputed_surveys)
 
 
 
@@ -215,10 +196,18 @@ toc()
 
 
 # Save full output, all imputations, with errors and everything
-saveRDS(outputs, '5_objects/imputation/all_survey_imp_outputs.rds')
+saveRDS(imputed_surveys, '5_objects/imputation/all_survey_imp_outputs.rds')
 
 # Also going to save the tuning grid to be used in next script
-saveRDS(tuning_grid, '5_objects/imputation/quick_grid.rds')
+saveRDS(full_grid, '5_objects/imputation/full_grid.rds')
 
 # Clear environment of objects
-clear_data()
+remove_data_objects()
+
+
+
+# Link to Imputation Testing ----------------------------------------------
+
+
+# See here for imputation testing:
+'4_scripts/imputation/imputation_testing.R'

@@ -1,13 +1,12 @@
 #' stepwise LR tests
-#' 2024-08-08 update
+#' 2024-04-24
 #' 
 #' Using `eRm::stepwiseIt()` function to reduce number of REBL items that came
 #' from conditional fits. We first have to rerun new Rasch models with that
-#' reduced set of items though. Note that we are not running these item 
-#' reduction scripts on survey 3 (test set). 
+#' reduced set of items though.
 #' 
 #' Inputs:
-#'    1. Reduced set of items (38) from conditional fit procedure
+#'    1. Reduced set of items (39) from conditional fit procedure
 #'    
 #' Outputs:
 #'    1. New `RM()` output for reduced set of items.
@@ -28,8 +27,7 @@ pacman::p_load(dplyr,
 rebl_items <- readRDS('5_objects/cml/item_reduction/rebl_items_cond_fit_38.rds')
 
 # Load surveys 2a and 2b
-surveys <- readRDS('2_clean/all_surveys_imputed.rds') %>% 
-  .[names(.) %in% c('survey_2a', 'survey_2b')]
+surveys <- readRDS('2_clean/all_surveys_imputed.rds')[2:3]
 
 
 
@@ -81,7 +79,14 @@ saveRDS(models, '5_objects/cml/item_reduction/cond_fit_reduced_models.rds')
 # Map it over both surveys.
 tic()
 lr_outputs <- imap(models, ~ {
-  print_time(paste0('Starting ', .y, ' at:'))
+  
+  cat('\n~~~ Starting', 
+      .y,
+      'at',
+      format(Sys.time(), '%X'),
+      '~~~\n'
+      )
+  
   stepwiseIt(.x,    
              criterion = list("LRtest"),
              verbose = TRUE,

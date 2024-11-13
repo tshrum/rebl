@@ -1,23 +1,23 @@
 #' conditional item fit
-#' 2024-08-21
+#' 2024-04-24
 
 #' First step in reducing the number of REBL items. Running iterations of 
-#' `boot_fit()` over surveys 2a and 2b and removing items where BOTH the 
-#' in.pkorr AND out.pkorr == 0. Running enough iterations that there are no
-#' items where both == 0. Then, just remove all items that are significant 
-#' EITHER in terms of in.pkorr OR out.pkorr in one round and ship it.
+#' `boot_fit()` over surveys 2a and 2b and removing items where the either the
+#' in.pkorr or out.pkorr == 0. Running enough iterations that all significantly
+#' misfitting items can be removed, or close to it?
 
-#' NOTE: The stopping mechanism in the while loop is not currently working. It
-#' should stop after the 5th iteration, but it keeps going. It is currently set 
-#' to hard stop at 6 to avoid a forever loop, but iterations 5 and 6 are 
-#' identical.
+#' NOTE: Might make more sense to keep eliminating items until neither infit or
+#' outfit are significant at 0.05. As it stands now, it stops when there are 
+#' still a couple of significantly misfitting items. Also, need to add a 
+#' stopping mechanism so it doesn't keep doing new iterations after it is stable
+#' NOTE: Only working with surveys 2a and 2b here for now because 1 is a mess.
 
 #' Inputs:
 #'    1. List of cml model outputs for all surveys
 #'    2. All clean surveys
 
 #' Outputs:
-#'    1. Conditional Item Fit iterations
+#'    1. Conditional Item Fit (currently 8x iterations)
 #'    2. Reduced set of REBL items to be sent to stepwiseIt LR tests
 
 
@@ -34,16 +34,13 @@ pacman::p_load(dplyr,
                tictoc,    # timer
                furrr,     # parallel map
                profvis,   # profiling
-               tibble,
-               parallelly)
+               tibble)    
 
 # Load just CML models for just surveys 2a and 2b
-cml_models <- readRDS('5_objects/cml/all_items/rasch_models.rds') %>% 
-  .[names(.) %in% c('survey_2a', 'survey_2b')]
+cml_models <- readRDS('5_objects/all_rasch_models.rds')[['cml']][2:3]
 
 # Pull in survey 2 again so that we can recombine REBL scores with prolificID
-surveys <- readRDS('2_clean/all_surveys_imputed.rds') %>% 
-  .[names(.) %in% c('survey_2a', 'survey_2b')]
+surveys <- readRDS('2_clean/all_surveys_imputed.rds')[2:3]
 
 # REBL item names to pull in the item fit section
 all_rebl_item_names <- readRDS('5_objects/all_rebl_item_names.rds')
@@ -70,12 +67,11 @@ cond_fits <- list()
 
 
 # Set up backend with 1 session for each survey
-print_time()
 tic()
 config <- furrr_options(globals = 'cml_models',
                         packages = c('purrr', 'iarm'),
                         seed = 42)
-plan(multisession, workers = availableCores(omit = 1))
+plan(multisession, workers = 2)
 
 # First round of conditional fit stats
 cond_fits$fit_1 <- future_map(cml_models, ~ {
@@ -85,7 +81,7 @@ cond_fits$fit_1 <- future_map(cml_models, ~ {
 
 plan(sequential)
 toc()
-# 3 minutes
+# 6.75 minutes
 
 
 
@@ -97,7 +93,8 @@ toc()
 # Prep while loop with iteration count, assign previous fit, print time
 i <- 1
 prev_fit <- cond_fits$fit_1
-print_time()
+cat('\nStarting at',
+    format(Sys.time(), '%X'))
 
 # Set up parallel backend
 tic()
@@ -110,7 +107,7 @@ plan(multisession, workers = 2)
 # Or stops at 10 iterations just in case!
 while ((any(unlist(map(prev_fit, ~ .x$in.pkorr == 0))) |
        any(unlist(map(prev_fit, ~ .x$out.pkorr == 0)))) && 
-       i <= 6) {
+       i <= 10) {
   
   # Get the next conditional fit iteration
   cond_fits[[paste0("fit_", i)]] <- get_next_cond_fit(prev_fit, 
@@ -130,8 +127,9 @@ while ((any(unlist(map(prev_fit, ~ .x$in.pkorr == 0))) |
 
 plan(sequential)
 toc()
-#' 568s (9.5 minutes) for 6 fits Note that the stopping procedure is not
-#' working. It should have stopped at 5.
+# 409 sec (7 minutes)
+# 30 minutes for 10 iterations. Note still having seed problems
+# Also the while loop isn't stopping properly...
 
 
 
@@ -158,7 +156,7 @@ map(cond_fits$fit_5, ~ {
     select(in.pkorr, out.pkorr, everything()) %>% 
     arrange(in.pkorr)
 })
-# Still some fits at 0
+# Still 4 infits at 0
 
 
 
@@ -188,6 +186,8 @@ map2(cond_fits$fit_5, cond_fits$fit_final, ~ {
 #'  "socialReduceImpact_"   
 #'  "transCarpool_"
 
+# Don't love these questions anyway
+
 
 
 # Keep only shared items --------------------------------------------------
@@ -214,5 +214,6 @@ saveRDS(cond_fits, '5_objects/cml/item_reduction/cond_fit_iters.rds')
 # And keepers
 saveRDS(final_item_fits$rebl_item,
         '5_objects/cml/item_reduction/rebl_items_cond_fit_38.rds')
+
 
 clear_data()
