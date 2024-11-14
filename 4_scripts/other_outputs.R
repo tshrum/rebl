@@ -19,30 +19,34 @@ pacman::p_load(
   flextable,
   ggplot2,
   crosstable,
-  flextable,
   stargazer,
   xtable,
   naniar,
-  ggpubr
+  ggpubr,
+  kableExtra
 )
 
+# Set kable styling options
+# options(
+#   kable_styling_position = NULL,
+#   kable_styling_latex_options = c(
+#     'striped',
+#     'hold_position',
+#     'repeat_header'
+#   ),
+#   knitr.table.toprule = '\\hline\\hline',
+#   knitr.table.bottomrule = '\\hline\\hline'
+# )
+# font_size <- 9
 
 
 # Demographics -----------------------------------------------------------
 
 
-#' Making a single demo table for both Survey 1 and 2a. Note that this comes 
-#' out pretty nice as docx, but loses formatting when saved as an image, and I 
-#' cannot for the life of me get it to come out in latex properly. Going through
-#' xtable might be possible, but I couldn't get that to work either. So for now,
-#' we are saving as docx, then opening in docx, and saving as image. It's the
-#' fucking worst and I hate it.
-
 #' Pulling data after exclusions, before imputations. We are going to take the
 #' UNCODED responses after variable naming and join them with the excluded
 #' surveys to get the right people but go back to the uncoded responses so we
-#' don't have to recode 1s and 0s back into worded responses. Does this make
-#' sense? Maybe.
+#' don't have to recode 1s and 0s back into worded responses.
 
 
 
@@ -80,89 +84,9 @@ get_str(survey_both)
 
 
 
-## Demos - Flextable -------------------------------------------------------
+## Table ------------------------------------------------------------------
 
 
-#' Now that data frames are arranged, we will make a table. The ultimate output
-#' is flextable, but we use crosstable to get nice formatting by demographic
-
-# Default formatting for flextable. We will also apply apa_theme later
-set_flextable_defaults(
-  font.family = 'Times',
-  font.size = 10,
-  text.align = 'center',
-  border.width = 0.5,
-  border.color = 'black',
-  table_align = 'left'
-)
-
-# Format factor labels, make cross table and convert to flextable
-demos <- survey_both %>%
-  select(age, gender, race, income, politics, survey) %>%
-  setNames(str_to_title(names(.))) %>% 
-  mutate(Race = factor(
-    Race,
-    levels = c(
-      'asian',
-      'black',
-      'hispanicLatino',
-      'native',
-      'white',
-      'twoOrMoreRaces',
-      'other'
-    ),
-    labels = c(
-      'Asian',
-      'Black',
-      'Hispanic or Latino',
-      'Native or Indigenous',
-      'White',
-      'Two or More Races',
-      'Other'
-    ),
-    ordered = TRUE
-  ),
-  Politics = factor(Politics,
-                    levels = c('Very conservative',
-                               'Conservative',
-                               'Somewhat conservative',
-                               'Moderate',
-                               'Somewhat liberal',
-                               'Liberal',
-                               'Very liberal')),
-  ) %>%
-  crosstable(
-    showNA = 'ifany',
-    by = 'Survey',
-    label = TRUE,
-    percent_pattern = "{n} ({p_col})"
-  ) %>% 
-  as_flextable() %>% 
-  flextable::align(align = 'center', part = 'all') %>% 
-  font(fontname = 'Times', part = 'all') %>% 
-  fontsize(size = 10, part = 'all') %>% 
-  autofit(add_w = 0, add_h = 0) %>% 
-  set_header_labels(values = list(
-    `1` = 'Survey 1',
-    `2` = 'Survey 2'
-    )
-  ) %>% 
-  flextable::compose(i = 1, j = 1, part = "header", value = as_paragraph("Demographic")) %>% 
-  flextable::compose(i = 1, j = 2, part = "header", value = as_paragraph("Category"))
-
-# Check it out
-demos
-
-#' Save as word doc. Note that if we save to image, it loses its apa formatting 
-#' work around for now is opening it in word and saving as image... I hate it
-save_as_docx(demos, path = '6_outputs/demographic_table_flex.docx')
-
-
-
-## Demos - kableExtra ------------------------------------------------------
-
-
-# This one is better. It can go straight to proper latex format.
 survey_both %>%
   select(age, gender, race, income, politics, survey) %>%
   setNames(str_to_title(names(.))) %>% 
@@ -218,16 +142,26 @@ survey_both %>%
     percent_pattern = "{n} ({p_col})",
     percent_digits = 1
   ) %>% 
-  select(-1) %>%
+  dplyr::select(-1) %>%
   setNames(c(' ', ' ', 'Study 1', 'Study 2 Part 1')) %>%
-  kbl(format = 'latex',
-      booktabs = TRUE,
-      align = 'c',
-      caption = 'Demographic Table',
-      position = 'p',
-      label = 'demographics'
-      ) %>%
-  kable_styling() %>% 
+  kbl(
+    format = 'latex',
+    booktabs = TRUE,
+    align = 'c',
+    caption = 'Demographic Table',
+    # position = 'p',
+    label = 'demographics',
+    linesep = ''
+    # toprule = "\\hline\\hline",
+    # bottomrule = "\\hline\\hline"
+  ) %>%
+  kable_styling(
+    font_size = 10,
+    position = 'center',
+    latex_options = c(
+      'hold_position'
+    )
+  ) %>% 
   add_header_above(c(" " = 2, 'Study' = 2)) %>% 
   column_spec(1, bold = T) %>%
   collapse_rows(
@@ -235,6 +169,15 @@ survey_both %>%
     latex_hline = 'major',
     row_group_label_position = "first"
   ) %>% 
+  footnote(
+    general_title = 'Note. ',
+    general = paste0(
+      'NA values are not included in percentage calculations.'
+    ),
+    escape = FALSE,
+    threeparttable = TRUE,
+    footnote_as_chunk = TRUE
+  ) %>%
   save_kable(
     file = '6_outputs/demographic_table.tex'
   )

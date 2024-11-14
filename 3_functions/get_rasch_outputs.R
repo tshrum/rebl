@@ -76,11 +76,16 @@ get_rasch_outputs <- function(models,
   
   # PW Item Maps -----
   iwalk(models, ~ {
+    # par(mar = c(1, 1, 0, 0))
     png(filename = paste0(plot_path, 'pw_item_map_', .y, '.png'),
-        width = 3000,
-        height = 2500,
-        units = 'px',
-        res = 300)
+        # width = 3000,
+        # height = 2500,
+        width = 6,
+        height = 5,
+        units = 'in',
+        res = 300,
+        pointsize = 10
+      )
     plotPWmap(
       .x, 
       pmap = FALSE, 
@@ -88,12 +93,12 @@ get_rasch_outputs <- function(models,
       mainitem = NA,
       latdim = 'Item Difficulty',
       tlab = 'Infit t Statistic',
-      cex.pch = 1.25,
+      cex.pch = 1,
       cex.gen = 1
     )
     dev.off()
-    cat('\n',
-        paste0(plot_path, 'pw_item_map_', .y, '.png'))
+    # par(mar = c(5, 4, 4, 2) + 0.1)
+    cat('\n', paste0(plot_path, 'pw_item_map_', .y, '.png'))
   })
   
   # PW Person Maps -----
@@ -109,8 +114,8 @@ get_rasch_outputs <- function(models,
       imap = FALSE,
       mainperson = NA,
       latdim = 'Latent Trait',
-      cex.pch = 1.25,
-      cex.gen = 1
+      cex.pch = 1.5, #[]
+      cex.gen = 3
     )
     dev.off()
     cat('\n',

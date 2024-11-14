@@ -176,13 +176,36 @@ eta_df <- eta_df %>%
   arrange(Eta) %>% 
   mutate(across(Eta:Mean, ~ format(round(., 3), nsmall = 3)))
 
-stargazer(
-  eta_df,
-  type = 'latex',
-  summary = FALSE,
-  out = paste0(csv_path, 'eta_table_2a.tex'),
-  title = 'Etas and SEs for REBL Items'
-)
+# Kable
+eta_df %>% 
+  kbl(
+    format = 'latex',
+    label = 'etas',
+    booktabs = TRUE,
+    align = 'c',
+    caption = 'Etas and SEs for REBL Items',
+    linesep = '',
+    toprule = "\\hline\\hline",
+    bottomrule = "\\hline\\hline"
+  ) %>%
+  kable_styling(
+    font_size = 10,
+    position = 'center',
+    latex_options = c(
+      'hold_position'
+    )
+  ) %>%
+  footnote(
+    general_title = 'Note. ',
+    general = paste(
+      'Etas represent difficulty parameters.',
+      'Items with larger values were performed less frequently than those with smaller values.'
+    ),
+    escape = FALSE,
+    threeparttable = TRUE,
+    footnote_as_chunk = TRUE
+  ) %>%
+  save_kable(file = paste0(csv_path, 'eta_table_2a.tex'))
 
 
 
@@ -225,13 +248,13 @@ final <- readRDS("2_clean/rebl_items_final.rds")
 all <- readRDS('5_objects/cleaning/rebl_item_coding.rds')
 
 # Filter for final to get final set with text, then xtable to save as latex
-rebl_text <- all %>% 
+all %>% 
   filter(rebl_item %in% final) %>% 
   select(rebl_item, question_text) %>% 
   mutate(
-    question_text = str_split_i(question_text, ' - ', 2),
-    rebl_item = str_remove(rebl_item, '_')) %>%
-  filter(!str_detect(question_text, 'focused on')) %>% # Getting rid of dupe
+    question_text = paste0('...', str_split_i(question_text, ' - ', 2)),
+    rebl_item = str_remove(rebl_item, '_r$|_')) %>%
+  filter(!str_detect(question_text, 'focused on|...NA')) %>%
   setNames(c('REBL Item',
              'In the last week, have you...')) %>% 
   xtable(
@@ -244,6 +267,42 @@ rebl_text <- all %>%
     file = '6_outputs/cml/final_items/rebl_text.tex',
     size = 'footnotesize'
   )
+
+####
+# all %>%
+#   filter(rebl_item %in% final) %>%
+#   select(rebl_item, question_text) %>%
+#   mutate(
+#     question_text = paste0('...', str_split_i(question_text, ' - ', 2)),
+#     rebl_item = str_remove(rebl_item, '_')) %>%
+#   filter(
+#     !str_detect(question_text, 'focused on'),
+#     question_text != '...NA'
+#   ) %>%
+#   setNames(c(
+#     'REBL Item',
+#     'In the last week, have you...'
+#   )) %>%
+#   kbl(
+#     format = 'latex',
+#     label = 'rebl_text',
+#     booktabs = TRUE,
+#     align = c('c', 'l'),
+#     caption = 'REBL Items and Text',
+#     linesep = '',
+#     toprule = "\\hline\\hline",
+#     bottomrule = "\\hline\\hline"
+#   ) %>%
+#   kable_styling(
+#     font_size = 10,
+#     full_width = FALSE,
+#     position = 'center',
+#     latex_options = c(
+#       'hold_position'
+#     )
+#   ) %>%
+#   column_spec(2, width = "5cm") %>% 
+#   save_kable(file = '6_outputs/cml/final_items/rebl_text.tex')
 
 
 

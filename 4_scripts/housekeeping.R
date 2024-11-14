@@ -18,6 +18,7 @@ conflicts_prefer(
   dplyr::summarize(),
   dplyr::all_of(),
   dplyr::any_of(),
+  kableExtra::footnote(),
   .quiet = TRUE
 )
 

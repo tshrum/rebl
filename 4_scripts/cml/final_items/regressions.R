@@ -249,13 +249,14 @@ stargazer(
   type = 'latex',
   # column.labels = c('REBL Only', 'With Demos', 'With Scales', 'No REBL'),
   column.sep.width = '1pt',
+  ci = TRUE,
   omit.stat = c('wald', 'll'),
   digits = 3,
   add.lines = list(
     c("AIC", round(map_dbl(models, AIC), 1)),
     c('BIC', round(map_dbl(models, BIC), 1)),
-    c('Log Lik', map_dbl(models, ~ .x$loglik[2] %>% round(1))),
-    c('Pseudo R2', format(round(pseudos, 3), nsmall = 3))
+    c('Log Lik', map_dbl(models, ~ .x$loglik[2] %>% round(1)))
+    # c('Pseudo R2', format(round(pseudos, 3), nsmall = 3))
   ),
   covariate.labels = c(
     'REBL',
@@ -278,7 +279,8 @@ stargazer(
   no.space = FALSE,
   notes.align = 'r',
   notes.append = TRUE,
-  notes = c("Pseudo R-squared by McFadden")
+  # notes = c("Pseudo R-squared by McFadden")
+  notes = c("Regression coefficients are shown in grid with confidence intervals in parentheses.")
 )
 
 
@@ -364,16 +366,18 @@ lms <- list(
 
 stargazer(
   lms,
+  ci = TRUE,
   type = 'latex',
   out = '6_outputs/cml/final_items/log_donation_regressions.tex',
   title = 'REBL and Log Donation Regressions',
   dep.var.labels = rep(c('REBL', 'Log Donation'), 4),
   covariate.labels = c('Green Glow', 'Enviro ID', 'Efficacy', 'CC Belief'),
   font.size = 'scriptsize',
-  column.sep.width = '1pt'
+  column.sep.width = '1pt',
+  notes.align = 'r',
+  notes.append = TRUE,
+  notes = c("Regression coefficients are shown in grid with confidence intervals in parentheses.")
 )
-
-
 
 # Clear -------------------------------------------------------------------
 
