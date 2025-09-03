@@ -16,8 +16,6 @@ coverage](https://codecov.io/gh/tshrum/rebl/graph/badge.svg)](https://app.codeco
 
 # Introduction
 
-> Note
-
 This is the repository for the Repeated Environmental Behavior Latent
 (REBL) Scale project. It contains all the code to build the REBL scale
 from raw data through visualizations.
