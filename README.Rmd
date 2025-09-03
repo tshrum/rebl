@@ -20,6 +20,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+<!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/tshrum/rebl/graph/badge.svg)](https://app.codecov.io/gh/tshrum/rebl)
+<!-- badges: end -->
+
 # Introduction
 
 This is the repository for the Repeated Environmental Behavior Latent (REBL) Scale project. It contains all the code to build the REBL scale from raw data through visualizations. 

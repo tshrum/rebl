@@ -2,13 +2,21 @@ REBL Scale
 ================
 Dr. Trisha Shrum, Chris Donovan
 
-November 03, 2024
+September 03, 2025
 
 - [Introduction](#introduction)
 - [Navigating the Project](#navigating-the-project)
 - [File Structure](#file-structure)
 
+<!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/tshrum/rebl/graph/badge.svg)](https://app.codecov.io/gh/tshrum/rebl)
+<!-- badges: end -->
+
 # Introduction
+
+> Note
 
 This is the repository for the Repeated Environmental Behavior Latent
 (REBL) Scale project. It contains all the code to build the REBL scale
