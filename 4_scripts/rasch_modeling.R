@@ -14,13 +14,15 @@
 # Load and Wrangle Data ---------------------------------------------------
 
 
-pacman::p_load(dplyr,
-               purrr,
-               eRm,
-               skimr,
-               furrr,
-               parallelly,
-               tictoc)
+pacman::p_load(
+  dplyr,
+  purrr,
+  eRm,
+  skimr,
+  furrr,
+  parallelly,
+  tictoc
+)
 
 # Load REBL item names to only grab those for Rasch modeling
 all_rebl_items <- readRDS('5_objects/all_rebl_item_names.rds')

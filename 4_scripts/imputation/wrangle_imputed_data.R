@@ -22,9 +22,11 @@
 
 
 # Now we have to get the one with lowest error for each survey
-pacman::p_load(dplyr,
-               purrr,
-               skimr)
+pacman::p_load(
+  dplyr,
+  purrr,
+  skimr
+)
 
 # Load miss forest functions (includes helpers for wrangling)
 source('3_functions/run_miss_forest.R')

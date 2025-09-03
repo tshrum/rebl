@@ -124,7 +124,7 @@ lr_tests <- map(list(surveys$survey_2a, surveys$survey_3), \(survey) {
   return(out)
 })
 
-get_str(lr_tests)
+lr_tests
 
 
 
@@ -134,6 +134,8 @@ get_str(lr_tests)
 # Plain old item fits
 fits <- map(models, get_fits)
 get_str(fits)
+get_str(fits[[1]])
+fits[[1]]
 
 
 
@@ -165,8 +167,9 @@ map(q3, get_str)
 # Everything --------------------------------------------------------------
 
 
-# Run all tests on both surveys at once. This runs in parallel
+# Run all tests above on both surveys at once. This runs in parallel
 all_tests <- test_rasch_model(surveys, final_items, models)
+# This takes a while to run
 
 
 

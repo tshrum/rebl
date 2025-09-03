@@ -26,16 +26,18 @@
 
 
 # Packages
-pacman::p_load(dplyr,
-               purrr,     # map
-               eRm,
-               iarm,      # boot_fit
-               tidyr,
-               tictoc,    # timer
-               furrr,     # parallel map
-               profvis,   # profiling
-               tibble,
-               parallelly)
+pacman::p_load(
+  dplyr,
+  purrr,     # map
+  eRm,
+  iarm,      # boot_fit
+  tidyr,
+  tictoc,    # timer
+  furrr,     # parallel map
+  profvis,   # profiling
+  tibble,
+  parallelly
+)
 
 # Load just CML models for just surveys 2a and 2b
 cml_models <- readRDS('5_objects/cml/all_items/rasch_models.rds') %>% 

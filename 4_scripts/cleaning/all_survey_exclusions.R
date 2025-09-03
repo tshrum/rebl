@@ -14,11 +14,13 @@
 # Load Data ---------------------------------------------------------------
 
 
-pacman::p_load(dplyr,
-               stringr,
-               lubridate,
-               tibble,
-               purrr)
+pacman::p_load(
+  dplyr,
+  stringr,
+  lubridate,
+  tibble,
+  purrr
+)
 
 # Load function for excluding cases. More info about use in that script.
 source('3_functions/exclude_cases.R')

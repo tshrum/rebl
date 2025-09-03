@@ -16,12 +16,14 @@
 
 
 # Packages
-pacman::p_load(readr,
-               stringr,
-               tibble,
-               dplyr,
-               lubridate,
-               purrr)
+pacman::p_load(
+  readr,
+  stringr,
+  tibble,
+  dplyr,
+  lubridate,
+  purrr
+)
 
 # Load recode and remove seasonal functions
 function_list <- list.files('3_functions', 
