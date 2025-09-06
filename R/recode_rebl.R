@@ -16,7 +16,7 @@
 #'   [reverse_code_rebl_items()], [get_rasch_model()]
 #' @export
 #'
-#' @importFrom dplyr mutate across any_of case_match
+#' @importFrom dplyr %>% mutate across any_of case_match
 #' @importFrom assertthat assert_that
 #'
 #' @examples

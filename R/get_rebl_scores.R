@@ -18,7 +18,7 @@
 #' @importFrom eRm person.parameter personfit
 #' @importFrom stats coef setNames
 #' @importFrom tibble rownames_to_column
-#' @importFrom dplyr inner_join
+#' @importFrom dplyr %>% inner_join
 #' @importFrom assertthat assert_that
 #'
 #' @examples

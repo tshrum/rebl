@@ -14,7 +14,7 @@
 #'   [recode_rebl()], [get_rasch_model()]
 #' @export
 #'
-#' @importFrom dplyr mutate across any_of case_when
+#' @importFrom dplyr %>% mutate across any_of case_when
 #' @importFrom assertthat assert_that
 #'
 #' @examples

@@ -18,7 +18,7 @@
 #' @seealso [id_rebl_items()], [id_reversed_rebl_items()],
 #'   [reverse_code_rebl_items()], [get_rebl_scores()]
 #'
-#' @importFrom dplyr select all_of any_of
+#' @importFrom dplyr %>% select all_of any_of
 #' @importFrom tibble column_to_rownames
 #' @importFrom eRm RM
 #' @importFrom assertthat assert_that

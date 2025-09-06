@@ -43,15 +43,21 @@ test_that("get_rasch_model handles missing items with warning", {
     item2 = c(0, 1, 0, 1, 0, 1, 0, 1, 0, 1)
   )
 
-  rebl_items <- c("item1", "item2", "missing_item")
-
+  # Test single missing item
+  rebl_items_single <- c("item1", "item2", "missing_item")
   expect_warning(
-    model <- get_rasch_model(test_df, "respondent_id", rebl_items),
+    model <- get_rasch_model(test_df, "respondent_id", rebl_items_single),
     "1 REBL item\\(s\\) not included in data frame: missing_item"
   )
-
-  # Should still create a model
   expect_s3_class(model, "Rm")
+
+  # Test multiple missing items
+  rebl_items_multiple <- c("item1", "item2", "missing_item1", "missing_item2", "missing_item3")
+  expect_warning(
+    model2 <- get_rasch_model(test_df, "respondent_id", rebl_items_multiple),
+    "3 REBL item\\(s\\) not included in data frame: missing_item1, missing_item2, missing_item3"
+  )
+  expect_s3_class(model2, "Rm")
 })
 
 test_that("get_rasch_model creates valid Rasch model", {
