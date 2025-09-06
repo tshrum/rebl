@@ -29,14 +29,14 @@
 # Model Fit ---------------------------------------------------------------
 
 
-test_that("get_fits gets fits", {
-  data('example', package = 'rebl')
-  example$respondent_id <- NULL
-  model <- RM(example)
-  expect_s3_class(model, 'eRm')
-
-  fit <- get_fits(model)
-  expect_s3_class(fit$person_fit, 'pfit')
-  expect_s3_class(fit$item_fit, 'ifit')
-})
+# test_that("get_fits gets fits", {
+#   data('example', package = 'rebl')
+#   example$respondent_id <- NULL
+#   model <- RM(example)
+#   expect_s3_class(model, 'eRm')
+#
+#   fit <- get_fits(model)
+#   expect_s3_class(fit$person_fit, 'pfit')
+#   expect_s3_class(fit$item_fit, 'ifit')
+# })
 

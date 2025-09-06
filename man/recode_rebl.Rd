@@ -4,28 +4,33 @@
 \alias{recode_rebl}
 \title{Recode REBL Items}
 \usage{
-recode_rebl(df)
+recode_rebl(df, rebl_items)
 }
 \arguments{
-\item{df}{Dataframe with cases excluded}
+\item{df}{A dataframe that includes all the REBL items}
+
+\item{rebl_items}{A character vector of all REBL items. You can use
+\code{\link[=id_rebl_items]{id_rebl_items()}} to get this.}
 }
 \value{
 Same dataframe with "Yes" and "No" coded to 1 and 0 as factors based
 on which one is the PEB
 }
 \description{
-Recoding values of REBL items based on which option is the Pro-Environmental Behavior (PEB).
-This applies to surveys 2a and 2b where responses need to be converted from "Yes"/"No" to
-1/0 based on whether the response represents pro-environmental behavior.
+Recode REBL items from Yes/No to 1/0. Does not deal with reverse
+coding. See \code{\link[=reverse_code_rebl_items]{reverse_code_rebl_items()}} for that.
 }
 \details{
-Will intentionally throw an error if any of the required columns don't exist.
-The function loads REBL item coding information from '5_objects/cleaning/rebl_item_coding.rds'
-to determine which items should be standard coded vs reverse coded.
+Will show a warning if any of the REBL items provided do not appear
+in the data frame.
 }
 \examples{
 \dontrun{
-# Example usage
-recoded_data <- recode_rebl(raw_survey_data)
+  rebl_items <- id_rebl_items(raw_example, '^(?!res).*')
+  df <- recode_rebl(raw_example, rebl_items)
 }
+}
+\seealso{
+\code{\link[=id_rebl_items]{id_rebl_items()}}, \code{\link[=id_reversed_rebl_items]{id_reversed_rebl_items()}},
+\code{\link[=reverse_code_rebl_items]{reverse_code_rebl_items()}}, \code{\link[=get_rasch_model]{get_rasch_model()}}
 }
