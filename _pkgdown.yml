@@ -1,0 +1,8 @@
+url: https://tshrum.github.io/rebl
+template:
+  bootstrap: 5
+  bslib:
+    bootswatch: sandstone
+    light-switch: true
+    pkgdown-nav-height: 100px
+
