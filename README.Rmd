@@ -40,7 +40,7 @@ This is the repository for the Repeated Environmental Behavior Latent (REBL) Sca
 To install the `rebl` package:
 
 ```{r eval = FALSE}
-# install.packages('remotes')
+if (!require('remotes')) install.packages('remotes')
 remotes::install_github('tshrum/rebl')
 ```
 
@@ -48,22 +48,31 @@ remotes::install_github('tshrum/rebl')
 
 #### Recoding Survey
 
-```{r output = FALSE}
+```{r output = FALSE, eval = FALSE}
 library(rebl)
 
 # Example data frame
 str(raw_example)
 
-# Identify REBL items with regex. 
-# Here we take everything that does not start with 'res'
-(rebl_items <- id_rebl_items(raw_example, '^(?!res).*', perl = TRUE))
+# Identify REBL items with regex. This just produces a character vector with all
+# the item names. It is not necessary if you already have this handy. Here is
+# an example with the food items:
+food_items <- id_rebl_items(raw_example, '^food', perl = TRUE)
+
+# Here we use regex to take everything that does not start with 'res', because
+# 'respondent_id' is our only non-REBL column. If items all start with 'rebl',
+# for example, pattern would just be '^rebl*'
+rebl_items <- id_rebl_items(raw_example, '^(?!res).*', perl = TRUE)
+
+# Check function documentation for reference
+?id_rebl_items
 
 # Recode REBL items from Yes/No to 1/0
 df <- recode_rebl(raw_example, rebl_items)
 
-# To reverse code reversed REBL items (where 0 is the PEB), first identify them.
+# To reverse code REBL items (where 0 is the PEB), first identify them.
 # Just using all food items as an example
-(reversed_items <- id_reversed_rebl_items(rebl_items, '^food'))
+reversed_items <- id_reversed_rebl_items(rebl_items, '^food')
 
 # Now recode the reversed items in the df
 df <- reverse_code_rebl_items(df, reversed_items)
@@ -71,19 +80,23 @@ df <- reverse_code_rebl_items(df, reversed_items)
 
 #### Getting REBL Scores
 
-
-```{r output = FALSE}
+```{r output = FALSE, eval = FALSE}
 # Run Rasch Model
 model <- get_rasch_model(df, 'respondent_id', rebl_items)
 
 # Throws warning if some items are not found in df
-model <- get_rasch_model(df, 'respondent_id', c(rebl_items, 'ffff', 'zzzz'))
+model2 <- get_rasch_model(df, 'respondent_id', c(rebl_items, 'ffff', 'zzzz'))
 
-# Get a df of REBL scores and person fit statistics
+# Throws error if no items are found in df
+model3 <- get_rasch_model(df, 'respondent_id', c('ffff', 'zzzz'))
+
+# Get a df of REBL scores, including person fit statistics
 rebl_scores <- get_rebl_scores(model)
+str(rebl_scores)
 
 # Only REBL scores, no fits
 rebl_only <- get_rebl_scores(model, include_fits = FALSE)
+str(rebl_only)
 ```
 
 
