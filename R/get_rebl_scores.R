@@ -11,7 +11,7 @@
 #' @returns A dataframe with participant IDs, REBL scores, and optionally person
 #'   fit statistics. When include_fits is TRUE, includes columns for outfit,
 #'   infit, and other fit measures from eRm::personfit()
-#' @seealso [get_rasch_model()], [id_rebl_items()], [recode_rebl()], 
+#' @seealso [get_rasch_model()], [id_rebl_items()], [recode_rebl()],
 #'   [reverse_code_rebl_items()]
 #' @export
 #'
@@ -26,11 +26,12 @@
 #'   # Fit model and get scores
 #'   model <- get_rasch_model(df, "id", rebl_items)
 #'   scores <- get_rebl_scores(model, include_fits = TRUE)
-#'   
+#'
 #'   # Get scores without fit statistics
 #'   scores_only <- get_rebl_scores(model, include_fits = FALSE)
 #' }
 get_rebl_scores <- function(model, include_fits = TRUE) {
+
   # Assertions
   assertthat::assert_that(
     'Rm' %in% class(model),
@@ -45,9 +46,10 @@ get_rebl_scores <- function(model, include_fits = TRUE) {
     msg = 'include_fits must be a single logical value'
   )
 
+  # Extract person parameters from Rasch model
   pp <- eRm::person.parameter(model)
 
-  # Get REBL scores
+  # Get df of REBL scores (person parameters) and ids
   rebl_scores <- stats::coef(pp) %>%
     as.data.frame() %>%
     tibble::rownames_to_column() %>%
@@ -62,7 +64,8 @@ get_rebl_scores <- function(model, include_fits = TRUE) {
     rebl_scores <- pfit %>%
       as.data.frame() %>%
       tibble::rownames_to_column('id') %>%
-      dplyr::inner_join(rebl_scores, by = 'id')
+      dplyr::inner_join(rebl_scores, by = 'id') %>%
+      dplyr::select(id, rebl_score, everything())
   }
   return(rebl_scores)
 }

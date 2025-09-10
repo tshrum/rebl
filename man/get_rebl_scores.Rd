@@ -27,7 +27,7 @@ response pattern fits the Rasch model.
   # Fit model and get scores
   model <- get_rasch_model(df, "id", rebl_items)
   scores <- get_rebl_scores(model, include_fits = TRUE)
-  
+
   # Get scores without fit statistics
   scores_only <- get_rebl_scores(model, include_fits = FALSE)
 }

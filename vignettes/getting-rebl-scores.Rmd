@@ -1,0 +1,111 @@
+---
+title: "Getting REBL Scores"
+output: 
+  rmarkdown::html_vignette:
+    css: styles.css
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{getting-rebl-scores}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+Somethign about REBL and PEBs and Rasch models.
+
+Install and load the `rebl` package:
+
+```{r warning = FALSE, output = FALSE}
+pacman::p_load_current_gh('tshrum/rebl')
+pacman::p_load(dplyr, ggplot2)
+```
+
+## Recoding
+
+Take a look at some randomly generated data as an example:
+
+```{r}
+head(raw_example[, 1:6])
+```
+
+We have a `respondent_id` column and 24 REBL items in the data frame.
+
+It will be mighty convenient if we had a character vector of our REBL items. If you already have this, grand. Otherwise, let's tell `rebl` what our items are. We can do this with a regex pattern. Here, we are just identifying any column that does not start with "res". 
+
+```{r}
+rebl_items <- id_rebl_items(
+  df = raw_example, 
+  pattern = '^(?!res).*', 
+  perl = TRUE
+)
+print(rebl_items[1:6])
+```
+
+If your items start with "rebl", the regex pattern would be `^rebl*`. 
+
+Next, in the event the data for our REBL items are in a yes/no format, we will convert them to 1/0:
+
+```{r}
+df <- recode_rebl(
+  df = raw_example, 
+  rebl_items = rebl_items
+)
+head(raw_example[, 1:6])
+```
+
+Now we recode our reverse-coded REBL items. These are the items where no/0 is the pro-environmental behavior. We start by making a vector of these items with a regex pattern. We use the example here of items that start with "food". (This is silly and confusing though - change this). Then we recode those items.
+
+```{r}
+reversed_items <- id_reversed_rebl_items(rebl_items, '^food')
+reversed_items[1:6]
+```
+
+Reverse code our new vector of items:
+
+```{r}
+df <- reverse_code_rebl_items(df, reversed_items)
+head(df[,1:6])
+```
+
+## Rasch Modeling
+
+Now we're ready to run the Rasch model and get REBL scores. The Rasch model for dichotomous items in the `eRm` package estimates the probability $P$ of a person $v$ to endorse an item $i$ to be:
+
+$$ 
+P(X_{vi}=1)=\frac{exp(\theta_v-\beta_i)}{1+exp(\theta_v-\beta_i)},
+$$
+
+where $\theta$ is the latent parameter for person ability (REBL score) and $\beta$ is the latent parameter for item difficulty.
+
+To calculate $\theta$ we just give the function a data frame, the name of the column with the respondent id, and the vector of REBL items:
+
+```{r}
+model <- get_rasch_model(
+  df = df, 
+  id = 'respondent_id', 
+  rebl_items = rebl_items
+)
+```
+
+The function will throw a warning if the some REBL items are not found in the data frame:
+
+```{r}
+model <- get_rasch_model(df, 'respondent_id', c(rebl_items, 'ffff', 'zzzz'))
+```
+
+Once we have our model, we can get a data frame with out REBL scores ($\theta$) as well as person fit statistics:
+
+```{r}
+rebl_scores <- get_rebl_scores(model)
+head(rebl_scores[, 1:6])
+```
+
