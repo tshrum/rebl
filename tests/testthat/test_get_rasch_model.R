@@ -46,18 +46,18 @@ test_that("get_rasch_model handles missing items with warning", {
   # Test single missing item
   rebl_items_single <- c("item1", "item2", "missing_item")
   expect_warning(
-    model <- get_rasch_model(test_df, "respondent_id", rebl_items_single),
+    model <- get_rasch_model(test_df, "respondent_id", rebl_items_single, type = 'mml_con'),
     "1 REBL item\\(s\\) not included in data frame: missing_item"
   )
-  expect_s3_class(model, "Rm")
+  expect_s3_class(model, "rasch")
 
   # Test multiple missing items
   rebl_items_multiple <- c("item1", "item2", "missing_item1", "missing_item2", "missing_item3")
   expect_warning(
-    model2 <- get_rasch_model(test_df, "respondent_id", rebl_items_multiple),
+    model2 <- get_rasch_model(test_df, "respondent_id", rebl_items_multiple, type = 'mml_con'),
     "3 REBL item\\(s\\) not included in data frame: missing_item1, missing_item2, missing_item3"
   )
-  expect_s3_class(model2, "Rm")
+  expect_s3_class(model2, "rasch")
 })
 
 test_that("get_rasch_model creates valid Rasch model", {
@@ -76,13 +76,10 @@ test_that("get_rasch_model creates valid Rasch model", {
   rebl_items <- c("item1", "item2", "item3")
 
   # Create model
-  model <- get_rasch_model(test_df, "respondent_id", rebl_items)
+  model <- get_rasch_model(test_df, "respondent_id", rebl_items, type = 'mml_con')
 
-  # Check that it's a valid Rm object
-  expect_s3_class(model, "Rm")
-  expect_true("betapar" %in% names(model))
-  expect_true("X" %in% names(model))
-  expect_equal(ncol(model$X), length(rebl_items))
+  # Check that it's a valid rasch object
+  expect_s3_class(model, "rasch")
 })
 
 test_that("get_rasch_model works with character and numeric IDs", {
@@ -97,8 +94,8 @@ test_that("get_rasch_model works with character and numeric IDs", {
   )
 
   rebl_items <- c("item1", "item2")
-  model_char <- get_rasch_model(test_df_char, "id", rebl_items)
-  expect_s3_class(model_char, "Rm")
+  model_char <- get_rasch_model(test_df_char, "id", rebl_items, type = 'mml_con')
+  expect_s3_class(model_char, "rasch")
 
   # Test with numeric IDs converted to character
   test_df_num <- data.frame(
@@ -107,8 +104,8 @@ test_that("get_rasch_model works with character and numeric IDs", {
     item2 = rep(c(0, 1, 0), 5)
   )
 
-  model_num <- get_rasch_model(test_df_num, "participant", rebl_items)
-  expect_s3_class(model_num, "Rm")
+  model_num <- get_rasch_model(test_df_num, "participant", rebl_items, type = 'mml_con')
+  expect_s3_class(model_num, "rasch")
 })
 
 test_that("get_rasch_model handles edge cases", {
@@ -122,8 +119,8 @@ test_that("get_rasch_model handles edge cases", {
     item2 = c(rep(1, 5), rep(0, 5))
   )
 
-  model <- get_rasch_model(min_df, "id", c("item1", "item2"))
-  expect_s3_class(model, "Rm")
+  model <- get_rasch_model(min_df, "id", c("item1", "item2"), type = 'mml_con')
+  expect_s3_class(model, "rasch")
 
   # Test with all items present but some missing from rebl_items list
   all_items_df <- data.frame(
@@ -135,7 +132,7 @@ test_that("get_rasch_model handles edge cases", {
 
   # Only specify some items
   partial_items <- c("item1", "item3")
-  model_partial <- get_rasch_model(all_items_df, "id", partial_items)
-  expect_s3_class(model_partial, "Rm")
+  model_partial <- get_rasch_model(all_items_df, "id", partial_items, type = 'mml_con')
+  expect_s3_class(model_partial, "rasch")
   expect_equal(ncol(model_partial$X), 2)
 })

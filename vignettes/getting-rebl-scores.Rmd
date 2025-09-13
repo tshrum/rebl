@@ -5,6 +5,7 @@ output:
     css: styles.css
     toc: true
     toc_depth: 2
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{getting-rebl-scores}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,21 +15,25 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE
 )
 ```
 
 ## Introduction
 
-Somethign about REBL and PEBs and Rasch models.
+Something about REBL and PEBs and Rasch models.
 
 Install and load the `rebl` package and friends:
 
 ```{r warning = FALSE, output = FALSE}
-pacman::p_load_current_gh('tshrum/rebl')
+# pacman::p_load_current_gh('tshrum/rebl')
+devtools::load_all()
 pacman::p_load(
   dplyr, 
-  ggplot2
+  ggplot2,
+  ltm,
+  eRm
 )
 ```
 
@@ -42,7 +47,7 @@ head(raw_example[, 1:6])
 
 We have a `respondent_id` column and 24 REBL items in the data frame.
 
-It will be mighty convenient if we had a character vector of our REBL items. If you already have this, grand. Otherwise, let's tell `rebl` what our items are. We can do this with a regex pattern. Here, we are just identifying any column that does not start with "res". 
+It will be mighty convenient if we had a character vector of our REBL items. If you already have this, grand. Otherwise, let's tell `rebl` what our items are. We can do this with a regex pattern. Here, we are just identifying any column that does not start with "res".
 
 ```{r}
 rebl_items <- id_rebl_items(
@@ -53,7 +58,7 @@ rebl_items <- id_rebl_items(
 print(rebl_items[1:6])
 ```
 
-If your items start with "rebl", the regex pattern would be `^rebl*`. 
+If your items start with "rebl", the regex pattern would be `^rebl*`.
 
 Next, in the event the data for our REBL items are in a yes/no format, we will convert them to 1/0:
 
@@ -69,7 +74,7 @@ Now we recode our reverse-coded REBL items. These are the items where no/0 is th
 
 ```{r}
 reversed_items <- id_reversed_rebl_items(rebl_items, '^food')
-reversed_items[1:6]
+head(reversed_items)
 ```
 
 Reverse code our new vector of items:
@@ -79,10 +84,9 @@ df <- reverse_code_rebl_items(df, reversed_items)
 head(df[,1:6])
 ```
 
-
 ## Rasch Modeling
 
-Now we're ready to run the Rasch model and get REBL scores. The Rasch model for dichotomous items in the `eRm` package estimates the probability $P$ of a person $v$ to endorse an item $i$ to be:
+Now we're ready to run the Rasch model and get REBL scores. The Rasch model for dichotomous items in the `eRm` package [@mair2007] estimates the probability $P$ of a person $v$ to endorse an item $i$ to be:
 
 $$ 
 P(X_{vi}=1)=\frac{exp(\theta_v-\beta_i)}{1+exp(\theta_v-\beta_i)},
@@ -93,7 +97,7 @@ where $\theta$ is the latent parameter for person ability (REBL score) and $\bet
 To calculate $\theta$ we just give the function a data frame, the name of the column with the respondent id, and the vector of REBL items:
 
 ```{r}
-model <- get_rasch_model(
+model_cml <- get_rasch_model(
   df = df, 
   id = 'respondent_id', 
   rebl_items = rebl_items,
@@ -101,7 +105,17 @@ model <- get_rasch_model(
 )
 ```
 
-We can also run a Maximum Marginal Likelihood (MML) constrained model:
+Here, the coefficients represent the item difficulty parameters. Note that the discrimination of every item is set to 1.
+
+We can also run a set of Marginal Maximum Likelihood (MML) models using the `ltm` package [@rizopoulos2006]. Parameters are estimated by maximizing the log-likelihoods of the observed data. The model is implemented in `ltm` by parameterizing the $m$th sample unit as:
+
+$$
+\ell_{m} (\theta)=\log\int p(x_{m}|z_{m};\theta)p(z_{m})dz_{m},
+$$
+
+a function of observed response vectors $x_m$, the rank of the respondent in latent trait values $z_m$, and the distribution of person abilities $dz_m$.
+
+First we try a constrained Rasch model, where item discriminations are constrained to all equal 1:
 
 ```{r}
 model_con <- get_rasch_model(
@@ -110,10 +124,10 @@ model_con <- get_rasch_model(
   rebl_items = rebl_items,
   type = 'mml_con'
 )
-summary(model)
+summary(model_con)
 ```
 
-Or MML unconstrained, two parameter logistic, or three parameter Birnbaum's model:
+We can also run the MML unconstrained, where item discriminations are set to be equal but can vary from one:
 
 ```{r}
 model_uncon <- get_rasch_model(
@@ -122,12 +136,22 @@ model_uncon <- get_rasch_model(
   rebl_items = rebl_items,
   type = 'mml_uncon'
 )
+```
+
+Or a two parameter logistic model that estimates both item difficulty and discrimination:
+
+```{r}
 model_2pl <- get_rasch_model(
   df = df, 
   id = 'respondent_id', 
   rebl_items = rebl_items,
   type = 'mml_2pl'
 )
+```
+
+Finally, we can use the three parameter logistic model that also estimates a latent variable for guessing:
+
+```{r}
 model_tpm <- get_rasch_model(
   df = df, 
   id = 'respondent_id', 
@@ -136,13 +160,73 @@ model_tpm <- get_rasch_model(
 )
 ```
 
+## Model Fit
+
+Add model fit, model comparisons. PI maps and such. ICC plots.
 
 ## Get REBL Scores
 
 Once we have our model, we can get a data frame with out REBL scores ($\theta$) as well as person fit statistics:
 
 ```{r}
-rebl_scores <- get_rebl_scores(model)
-head(rebl_scores[, 1:6])
+rebl_scores <- get_rebl_scores(
+  model = model_cml
+)
+head(rebl_scores)
 ```
 
+`rebl_score`s are the latent person ability parameter $\theta$. We also include person fit statistics.
+
+The function recognizes the model type and generates the output df accordingly. Let's try it with the `mml_uncon` model:
+
+```{r}
+rebl_scores <- get_rebl_scores(
+  model = model_con,
+  df = df,
+  rebl_items = rebl_items
+)
+head(rebl_scores)
+```
+
+Here, `Exp` is the expected frequency of the response pattern, `z1` is the person parameter (REBL score), and `se.z1` is the standard error. All of the ltm varieties of models result in this same structure:
+
+```{r}
+rebl_scores <- get_rebl_scores(
+  model = model_2pl,
+  df = df,
+  rebl_items = rebl_items
+)
+head(rebl_scores)
+```
+
+```{r}
+rebl_scores <- get_rebl_scores(
+  model = model_tpm,
+  df = df,
+  rebl_items = rebl_items
+)
+head(rebl_scores)
+```
+
+## Fits
+
+### Person FIt
+
+For `eRm` model:
+
+```{r}
+person_fits <- get_person_fits(model_cml)
+head(person_fits)
+```
+For `ltm` models:
+
+```{r}
+person_fits <- get_person_fits(model_2pl)
+head(person_fits)
+```
+
+Here, $L_0$ is the Levine and Rubin (1979) test statistic, $L_z$ is the standardized version (Drasgow et al., 1985), and $p$ is the test of person fit where the null hypothesis is good fit.
+
+### Item Fit
+
+## References

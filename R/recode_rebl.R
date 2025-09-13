@@ -40,7 +40,6 @@ recode_rebl <- function(df, rebl_items) {
   )
 
   out <- df %>%
-    stringr::str_trim() %>%
     dplyr::mutate(
       dplyr::across(
         dplyr::any_of(rebl_items), ~ dplyr::case_match(., "Yes" ~ 1, "No" ~ 0)
