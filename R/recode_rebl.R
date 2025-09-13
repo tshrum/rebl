@@ -12,7 +12,7 @@
 #' @details Will show a warning if any of the REBL items provided do not appear
 #'   in the data frame.
 #'
-#' @seealso [id_rebl_items()], [id_reversed_rebl_items()], 
+#' @seealso [id_rebl_items()], [id_reversed_rebl_items()],
 #'   [reverse_code_rebl_items()], [get_rasch_model()]
 #' @export
 #'
@@ -25,7 +25,7 @@
 #'   df <- recode_rebl(raw_example, rebl_items)
 #' }
 recode_rebl <- function(df, rebl_items) {
-  # Assertions
+  # Check inputs
   assertthat::assert_that(
     'data.frame' %in% class(df),
     msg = paste('df must be a data.frame, not a', class(df))

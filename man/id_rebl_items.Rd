@@ -33,6 +33,7 @@ you choose to get it.
 }
 \examples{
 \dontrun{
+data(example)
 (id_rebl_items(example, 'lunch')
 (id_rebl_items(example, 'lunch', ignore.case = TRUE))
 (id_rebl_items(example, '^food')

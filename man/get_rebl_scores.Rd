@@ -4,7 +4,7 @@
 \alias{get_rebl_scores}
 \title{Get REBL Scores}
 \usage{
-get_rebl_scores(model, include_fits = TRUE)
+get_rebl_scores(model, df = NULL, rebl_items = NULL)
 }
 \arguments{
 \item{model}{A fitted eRm Rasch model object from \code{\link[=get_rasch_model]{get_rasch_model()}}}

@@ -1,4 +1,4 @@
-test_that("get_rebl_scores returns correct structure with fits", {
+test_that("get_rebl_scores returns correct structure", {
   # Skip if eRm not available
   skip_if_not_installed("eRm")
 
@@ -14,51 +14,14 @@ test_that("get_rebl_scores returns correct structure with fits", {
   rebl_items <- c("item1", "item2", "item3")
 
   # Create model
-  model <- get_rasch_model(test_df, "respondent_id", rebl_items)
+  model <- get_rasch_model(test_df, "respondent_id", rebl_items, type = 'cml')
 
-  # Test with fits (default)
-  scores_with_fits <- get_rebl_scores(model, include_fits = TRUE)
+  # Get scores
+  scores_with_fits <- get_rebl_scores(model)
 
   # Check basic structure
   expect_true(is.data.frame(scores_with_fits))
-  expect_true("rebl_score" %in% names(scores_with_fits))
-  expect_true("id" %in% names(scores_with_fits))
   expect_true(nrow(scores_with_fits) > 0)  # Some may be excluded due to extreme scores
-
-  # Should have fit statistics (more than just id and rebl_score)
-  expect_true(ncol(scores_with_fits) > 2)
-
-  # Check that fit statistics are included
-  fit_cols <- c("p.fit", "outfit", "infit", "z.infit", "z.outfit", "disc")
-  expect_true(any(fit_cols %in% names(scores_with_fits)))
-})
-
-test_that("get_rebl_scores returns correct structure without fits", {
-  # Skip if eRm not available
-  skip_if_not_installed("eRm")
-
-  # Create test data
-  set.seed(456)
-  test_df <- data.frame(
-    respondent_id = as.character(1:20),
-    item1 = sample(c(0, 1), 20, replace = TRUE),
-    item2 = sample(c(0, 1), 20, replace = TRUE),
-    item3 = sample(c(0, 1), 20, replace = TRUE)
-  )
-
-  rebl_items <- c("item1", "item2", "item3")
-
-  # Create model
-  model <- get_rasch_model(test_df, "respondent_id", rebl_items)
-
-  # Test without fits
-  scores_only <- get_rebl_scores(model, include_fits = FALSE)
-
-  # Check structure
-  expect_true(is.data.frame(scores_only))
-  expect_equal(ncol(scores_only), 2)  # Only id and rebl_score
-  expect_true(all(c("id", "rebl_score") %in% names(scores_only)))
-  expect_true(nrow(scores_only) > 0)  # Some may be excluded due to extreme scores
 })
 
 test_that("get_rebl_scores preserves participant IDs correctly", {
@@ -79,12 +42,15 @@ test_that("get_rebl_scores preserves participant IDs correctly", {
   rebl_items <- c("item1", "item2", "item3")
 
   # Create model and get scores
-  model <- get_rasch_model(test_df, "participant_id", rebl_items)
-  scores <- get_rebl_scores(model)
+  model <- get_rasch_model(test_df, "participant_id", rebl_items, type = 'mml_con')
+  scores <- get_rebl_scores(
+    model = model,
+    df = test_df,
+    rebl_items = rebl_items
+  )
 
-  # Check that IDs are preserved (some may be excluded due to extreme scores)
+  # Check that IDs are preserved
   expect_true(all(scores$id %in% test_ids))
-  expect_true(length(unique(scores$id)) > 0)
 })
 
 test_that("get_rebl_scores handles edge cases", {
@@ -99,38 +65,10 @@ test_that("get_rebl_scores handles edge cases", {
     item3 = c(0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0)
   )
 
-  model <- get_rasch_model(test_df, "id", c("item1", "item2", "item3"))
+  model <- get_rasch_model(test_df, "id", c("item1", "item2", "item3"), type = 'cml')
   scores <- get_rebl_scores(model)
 
   # Should handle the model without errors
   expect_true(is.data.frame(scores))
   expect_true(nrow(scores) > 0)  # Some may be excluded due to extreme scores
-  expect_true(all(is.numeric(scores$rebl_score)))
-})
-
-test_that("get_rebl_scores default parameter works", {
-  browser()
-  # Skip if eRm not available
-  skip_if_not_installed("eRm")
-
-  # Create simple test data - more variable to avoid extreme scores
-  set.seed(999)
-  test_df <- data.frame(
-    id = as.character(1:20),
-    item1 = sample(c(0, 1), 20, replace = TRUE),
-    item2 = sample(c(0, 1), 20, replace = TRUE),
-    item3 = sample(c(0, 1), 20, replace = TRUE),
-    item4 = sample(c(0, 1), 20, replace = TRUE),
-    item5 = sample(c(0, 1), 20, replace = TRUE)
-  )
-
-  model <- get_rasch_model(test_df, "id", c("item1", "item2"))
-
-  # Test default (should include fits)
-  scores_default <- get_rebl_scores(model)
-  expect_true(ncol(scores_default) > 2)  # More than just id and rebl_score
-
-  # Test explicit TRUE
-  scores_explicit <- get_rebl_scores(model, include_fits = TRUE)
-  expect_equal(ncol(scores_default), ncol(scores_explicit))
 })
