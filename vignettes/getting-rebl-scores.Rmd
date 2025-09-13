@@ -22,11 +22,14 @@ knitr::opts_chunk$set(
 
 Somethign about REBL and PEBs and Rasch models.
 
-Install and load the `rebl` package:
+Install and load the `rebl` package and friends:
 
 ```{r warning = FALSE, output = FALSE}
 pacman::p_load_current_gh('tshrum/rebl')
-pacman::p_load(dplyr, ggplot2)
+pacman::p_load(
+  dplyr, 
+  ggplot2
+)
 ```
 
 ## Recoding
@@ -76,6 +79,7 @@ df <- reverse_code_rebl_items(df, reversed_items)
 head(df[,1:6])
 ```
 
+
 ## Rasch Modeling
 
 Now we're ready to run the Rasch model and get REBL scores. The Rasch model for dichotomous items in the `eRm` package estimates the probability $P$ of a person $v$ to endorse an item $i$ to be:
@@ -92,15 +96,48 @@ To calculate $\theta$ we just give the function a data frame, the name of the co
 model <- get_rasch_model(
   df = df, 
   id = 'respondent_id', 
-  rebl_items = rebl_items
+  rebl_items = rebl_items,
+  type = 'cml'
 )
 ```
 
-The function will throw a warning if the some REBL items are not found in the data frame:
+We can also run a Maximum Marginal Likelihood (MML) constrained model:
 
 ```{r}
-model <- get_rasch_model(df, 'respondent_id', c(rebl_items, 'ffff', 'zzzz'))
+model_con <- get_rasch_model(
+  df = df, 
+  id = 'respondent_id', 
+  rebl_items = rebl_items,
+  type = 'mml_con'
+)
+summary(model)
 ```
+
+Or MML unconstrained, two parameter logistic, or three parameter Birnbaum's model:
+
+```{r}
+model_uncon <- get_rasch_model(
+  df = df, 
+  id = 'respondent_id', 
+  rebl_items = rebl_items,
+  type = 'mml_uncon'
+)
+model_2pl <- get_rasch_model(
+  df = df, 
+  id = 'respondent_id', 
+  rebl_items = rebl_items,
+  type = 'mml_2pl'
+)
+model_tpm <- get_rasch_model(
+  df = df, 
+  id = 'respondent_id', 
+  rebl_items = rebl_items,
+  type = 'mml_tpm'
+)
+```
+
+
+## Get REBL Scores
 
 Once we have our model, we can get a data frame with out REBL scores ($\theta$) as well as person fit statistics:
 

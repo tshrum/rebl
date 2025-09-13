@@ -4,19 +4,27 @@
 \alias{get_rasch_model}
 \title{Get Rasch Model}
 \usage{
-get_rasch_model(df, id, rebl_items, include_fit = TRUE)
+get_rasch_model(
+  df,
+  id,
+  rebl_items,
+  type = c("cml", "mml_constrained", "mml_con", "mml_unconstrained", "mml_uncon", "2pl",
+    "tpm")
+)
 }
 \arguments{
 \item{df}{A dataframe containing the REBL items and participant IDs}
 
-\item{id}{A character string specifying the column name containing participant
-IDs}
+\item{id}{A character string specifying the column name containing
+participant IDs}
 
 \item{rebl_items}{A character vector of REBL item column names to include in
-the model}
+the model. Get this with \code{id_rebl_items()} if you don't have it handy.}
 
-\item{include_fit}{Logical indicating whether to include fit statistics
-(currently not implemented in function body)}
+\item{type}{A string. \code{cml} = conditional maximum likelihood, \code{mml_con} =
+constrained maximum marginal likelihood, \code{mml_uncon} = unconstrained
+maximum marginal likelihoood, \code{tpl} = two parameter logistic model, \code{tpm} =
+three parameter logistic model. See details for more info.}
 }
 \value{
 An eRm Rasch model object that can be passed to other functions like
@@ -24,8 +32,11 @@ An eRm Rasch model object that can be passed to other functions like
 }
 \description{
 Fit a Rasch model to REBL items using the eRm package. This
-creates a Rasch model object that can be used to calculate person parameters
-(REBL scores) and item parameters.
+creates a Rasch model object that can be used to calculate person
+parameters (REBL scores) and item parameters.
+}
+\details{
+Add some more details about what this means.
 }
 \examples{
 \dontrun{

@@ -24,7 +24,7 @@
 #'   df_reversed <- reverse_code_rebl_items(df, reversed_items)
 #' }
 reverse_code_rebl_items <- function(df, reversed_items) {
-  # Assertions
+  # Check inputs
   assertthat::assert_that(
     'data.frame' %in% class(df),
     msg = paste('df must be a data.frame, not a', class(df))
