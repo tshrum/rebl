@@ -1,8 +1,15 @@
-url: https://tshrum.github.io/rebl
+url: https://chrisdonovan307.github.io/rebl
 template:
   bootstrap: 5
   bslib:
-    bootswatch: sandstone
+    bootswatch: flatly
     light-switch: true
     pkgdown-nav-height: 100px
-
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github, lightswitch]
+footer:
+  structure:
+    left: developed_by
+    right: built_with

@@ -7,19 +7,24 @@
 fix_lumped_ltm_scores(df, scores, rebl_items)
 }
 \arguments{
-\item{df}{A data frame containing the original response data with participant IDs}
+\item{df}{A data frame containing the original response data with participant
+IDs}
 
-\item{scores}{A list object returned by ltm::factor.scores() containing score.dat}
+\item{scores}{A list object returned by ltm::factor.scores() containing
+score.dat}
 
 \item{rebl_items}{Character vector of column names representing REBL items}
 }
 \value{
-A data frame with participant IDs, REBL scores ordered by original row position
+A data frame with participant IDs, REBL scores ordered by original
+row position
 }
 \description{
 Resolves issue where ltm model returns fewer observations than
-input data due to response patterns being collapsed into groups. This function
-maps the model scores back to the original participant observations using
-unique response pattern identifiers.
+input data due to response patterns being collapsed into groups. In other
+words, multiple people have the exact same response pattern and the output
+provides a single person parameter for each pattern, rather than each
+person. This function maps the model scores back to the original
+participant observations using unique response pattern identifiers.
 }
 \keyword{internal}

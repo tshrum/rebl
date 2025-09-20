@@ -7,7 +7,7 @@ output:
     toc_depth: 2
 bibliography: references.bib
 vignette: >
-  %\VignetteIndexEntry{getting-rebl-scores}
+  %\VignetteIndexEntry{Getting REBL Scores}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -185,7 +185,7 @@ rebl_scores <- get_rebl_scores(
   df = df,
   rebl_items = rebl_items
 )
-head(rebl_scores)
+head(rebl_scores[, 1:6])
 ```
 
 Here, `Exp` is the expected frequency of the response pattern, `z1` is the person parameter (REBL score), and `se.z1` is the standard error. All of the ltm varieties of models result in this same structure:
@@ -196,7 +196,7 @@ rebl_scores <- get_rebl_scores(
   df = df,
   rebl_items = rebl_items
 )
-head(rebl_scores)
+head(rebl_scores[, 1:6])
 ```
 
 ```{r}
