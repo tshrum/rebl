@@ -8,7 +8,7 @@
 #'  b. Donation ~ REBL + demos + enviro scales
 #'  b. Donation ~ demos + enviro scales
 #' 2. Correlation Matrix - each enviro scale with REBL and log donation
-#'  This was a set of regressions before. 
+#'  This was a set of regressions before.
 #' 3. Series of regressions with log donation score or REBL score as dependent
 #'  var, with enviro scales as predictors
 
@@ -30,7 +30,8 @@ pacman::p_load(
   ggcorrplot,
   knitr,
   kableExtra,
-  rstatix
+  rstatix,
+  car
 )
 
 conflicted::conflicts_prefer(
@@ -61,7 +62,7 @@ get_table(dat$dictatorGame)
 hist(dat$dictatorGame)
 
 # Get averages of scales. Do not include items that were added by Chris.
-dat <- dat %>% 
+dat <- dat %>%
   mutate(enviroID = rowMeans(select(., matches('^enviroID[1-3]')), na.rm = TRUE),
          greenGlow = rowMeans(select(., matches('^greenGlow')), na.rm = TRUE),
          efficacy = rowMeans(select(., matches('^efficacy[1-4]')), na.rm = TRUE),
@@ -69,7 +70,7 @@ dat <- dat %>%
 get_str(dat)
 
 # Put politics back into numeric and divide income by 1000
-dat <- dat %>% 
+dat <- dat %>%
   mutate(
     politics = case_when(
       str_detect(politics, '^Very l') ~ 1,
@@ -117,26 +118,24 @@ tobit_1 <- tobit(
 
 summary(tobit_1)
 hist(residuals(tobit_1))
-tobit_1 %>% 
-  residuals() %>% 
+tobit_1 %>%
+  residuals() %>%
   plot()
-# Oh shit these actually aren't half bad
+# These actually aren't half bad
 
 plot(fitted(tobit_1), residuals(tobit_1),
      xlab = "Fitted values",
      ylab = "Residuals",
      main = "Residuals vs Fitted values")
 abline(h = 0, col = "red")
-# This bad though
 
 qqnorm(residuals(tobit_1))
 qqline(residuals(tobit_1))
-# This is not ideal.
 
 
 ## Add Demos -----
 tobit_2 <- tobit(
-  dictatorGame ~ rebl_score + age + gender + education + rurality + income + 
+  dictatorGame ~ rebl_score + age + gender + education + rurality + income +
     politics,
   left = 0,
   right = 10,
@@ -146,14 +145,15 @@ tobit_2 <- tobit(
 
 summary(tobit_2)
 residuals(tobit_2) %>% hist()
-tobit_2 %>% 
-  residuals() %>% 
+tobit_2 %>%
+  residuals() %>%
   plot()
+car::vif(tobit_2)
 
 
 ## Add Scales -----
 tobit_3 <- tobit(
-  dictatorGame ~ rebl_score + age + gender + education + rurality + income + 
+  dictatorGame ~ rebl_score + age + gender + education + rurality + income +
     politics + enviroID + greenGlow + efficacy + ccBelief,
   left = 0,
   right = 10,
@@ -163,16 +163,16 @@ tobit_3 <- tobit(
 
 summary(tobit_3)
 residuals(tobit_3) %>% hist()
-tobit_3 %>% 
-  residuals() %>% 
+tobit_3 %>%
+  residuals() %>%
   plot()
+car::vif(tobit_3)
 
 plot(fitted(tobit_3), residuals(tobit_3),
      xlab = "Fitted values",
      ylab = "Residuals",
      main = "Residuals vs Fitted values")
 abline(h = 0, col = "red")
-# Yeah nope
 
 qqnorm(residuals(tobit_3))
 qqline(residuals(tobit_3))
@@ -181,7 +181,7 @@ qqline(residuals(tobit_3))
 
 ## Not REBL -----
 tobit_4 <- tobit(
-  dictatorGame ~ age + gender + education + rurality + income + politics + 
+  dictatorGame ~ age + gender + education + rurality + income + politics +
     enviroID + greenGlow + efficacy + ccBelief,
   left = 0,
   right = 10,
@@ -191,9 +191,10 @@ tobit_4 <- tobit(
 
 summary(tobit_4)
 residuals(tobit_4) %>% hist()
-tobit_4 %>% 
-  residuals() %>% 
+tobit_4 %>%
+  residuals() %>%
   plot()
+car::vif(tobit_4)
 
 
 ## Compare Fit -----
@@ -234,7 +235,7 @@ tobit_null <- tobit(
 loglik_tobit_null <- logLik(tobit_null)
 
 # Calculate. Loglik already took the natural log, so we don't need that
-pseudos <- map(models, ~ 1 - (logLik(.x) / loglik_tobit_null)) %>% 
+pseudos <- map(models, ~ 1 - (logLik(.x) / loglik_tobit_null)) %>%
   unlist()
 pseudos
 
@@ -288,13 +289,13 @@ stargazer(
 
 
 # all scales against REBL and log donation
-cor_dat <- dat %>% 
-  mutate(log_donation = ifelse(dictatorGame == 0, 0, log(dictatorGame))) %>% 
+cor_dat <- dat %>%
+  mutate(log_donation = ifelse(dictatorGame == 0, 0, log(dictatorGame))) %>%
   select(enviroID, greenGlow, efficacy, ccBelief, rebl_score, log_donation)
 
 make_plot <- function(data, mapping, ...){
-  ggplot(data = data, mapping = mapping) + 
-    geom_jitter(height = 0.25, width = 0.25, alpha = 0.4) + 
+  ggplot(data = data, mapping = mapping) +
+    geom_jitter(height = 0.25, width = 0.25, alpha = 0.4) +
     geom_smooth(method = "lm", color = "blue", se = FALSE)
 }
 
@@ -315,7 +316,7 @@ ggsave(
 ## Correlation Matrix ------------------------------------------------------
 
 
-cor_dat %>% 
+cor_dat %>%
   setNames(c(
     'EnviroID',
     'Green Glow',
@@ -323,23 +324,23 @@ cor_dat %>%
     'CC Belief',
     'REBL Score',
     'Log Donation'
-  )) %>% 
-  cor_mat() %>% 
+  )) %>%
+  cor_mat() %>%
   cor_mark_significant(
     cutpoints = c(0, 0.01, 0.05, 0.1),
     symbols = c('***', '**', '*')
   ) %>%
-  {names(.)[1] <- ''; .} %>% 
-  .[, -ncol(.)] %>% 
+  {names(.)[1] <- ''; .} %>%
+  .[, -ncol(.)] %>%
   kbl(
     'latex',
     label = 'log_donation_regression',
     caption = 'Correlation Table',
     booktabs = TRUE
-  ) %>% 
+  ) %>%
   kable_styling(
     font_size = 10
-  ) %>% 
+  ) %>%
   save_kable(
     file = '6_outputs/cml/final_items/correlation_table.tex',
     keep_tex = TRUE
